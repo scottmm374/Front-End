@@ -3,10 +3,9 @@ import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import api from "../utils/api";
 
-function PatientRegistrationForm({ errors, touched, status }) {
-  const [patientReg, setPatientReg] = useState([
+function PatientLoginForm({ errors, touched, status }) {
+  const [patientLogin, setPatientLogin] = useState([
     {
-      userName: "",
       userEmail: "",
       userPassword: ""
     }
@@ -14,16 +13,12 @@ function PatientRegistrationForm({ errors, touched, status }) {
 
   useEffect(() => {
     if (status) {
-      setPatientReg(...patientReg, status);
+      setPatientLogin(...patientLogin, status);
     }
   }, [status]);
 
   return (
     <Form>
-      <div>
-        {touched.userName && errors.userName && <p>{errors.title}</p>}
-        <Field type="text" name="userName" placeholder="userName" />
-      </div>
       <div>
         {touched.userEmail && errors.userEmail && <p>{errors.userEmail}</p>}
         <Field type="text" name="userEmail" placeholder="userEmail" />
@@ -34,7 +29,7 @@ function PatientRegistrationForm({ errors, touched, status }) {
         )}
         <Field type="text" name="userPassword" placeholder="userPassword" />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit">Login</button>
     </Form>
   );
 }
@@ -42,21 +37,12 @@ function PatientRegistrationForm({ errors, touched, status }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
-      userName: values.userName || "",
       userEmail: values.userEmail || "",
       userPassword: values.userPassword || ""
     };
   },
 
   validationScheme: yup.object().shape({
-    userName: yup
-      .string()
-      .matches(
-        /^[\w]+$/,
-        "Your username may only contain letters, numbers, and underscore. "
-      )
-      .min(3, "UserName must be at least characters")
-      .required("Please enter your name"),
     userEmail: yup
       .string()
       .email()
@@ -68,16 +54,18 @@ export default withFormik({
   }),
 
   handleSubmit: (values, { setStatus }) => {
-    console.log(" REgistration", values);
+    console.log(" Registration", values);
 
     api()
-      .post("/auth/user-register", values)
+      .post("/auth/user-login", values)
       .then(res => {
+        localStorage.setItem("token", res.data.payload);
         setStatus(res.data);
-        console.log("register res", res.data);
+        console.log("Login patient", res.data);
+        // values.userLogin(res.data);
       })
       .catch(err => {
-        console.log("Registration error", err);
+        console.log("Patient login error", err);
       });
   }
-})(PatientRegistrationForm);
+})(PatientLoginForm);

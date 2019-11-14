@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import api from "../utils/api";
 
-function MedRegistrationForm({ errors, touched }) {
+function MedRegistrationForm({ errors, touched, status }) {
+  const [medReg, setMedReg] = useState([
+    {
+      medicFirstName: "",
+      medicLastName: "",
+      medicEmail: "",
+      medicPassword: "",
+      company: "",
+      position: ""
+    }
+  ]);
+
+  useEffect(() => {
+    if (status) {
+      setMedReg(...medReg, status);
+    }
+  }, [status]);
+
   return (
     <Form>
+      <div>
+        {touched.medicFirstName && errors.medicFirstName && (
+          <p>{errors.medicFirstName}</p>
+        )}
+        <Field type="text" name="medicFirstName" placeholder="First Name" />
+      </div>
+      <div>
+        {touched.medicLastName && errors.medicLastName && (
+          <p>{errors.medicLastName}</p>
+        )}
+        <Field type="text" name="medicLastName" placeholder="Last Name" />
+      </div>
       <div>
         {touched.medicEmail && errors.medicEmail && <p>{errors.medicEmail}</p>}
         <Field type="text" name="medicEmail" placeholder="Email" />
@@ -24,18 +53,7 @@ function MedRegistrationForm({ errors, touched }) {
         {touched.position && errors.position && <p>{errors.position}</p>}
         <Field type="text" name="position" placeholder="position" />
       </div>
-      <div>
-        {touched.medicFirstName && errors.medicFirstName && (
-          <p>{errors.medicFirstName}</p>
-        )}
-        <Field type="text" name="medicFirstName" placeholder="First Name" />
-      </div>
-      <div>
-        {touched.medicLastName && errors.medicLastName && (
-          <p>{errors.medicLastName}</p>
-        )}
-        <Field type="text" name="medicLastName" placeholder="Last Name" />
-      </div>
+
       <button type="submit">Submit</button>
     </Form>
   );
@@ -71,19 +89,13 @@ export default withFormik({
     position: yup.string().required("Please enter your position")
   }),
 
-  handleSubmit: values => {
+  handleSubmit: (values, { setStatus }) => {
     console.log("Med Reg", values);
 
     api()
-      .post("/auth/med-register", {
-        medicFirstName: values.medicFirstName,
-        medicLastName: values.medicLastName,
-        medicEmail: values.medicEmail,
-        medicPassword: values.medicPassword,
-        company: values.company,
-        position: values.position
-      })
+      .post("/auth/med-register", values)
       .then(res => {
+        setStatus(res.data);
         console.log(" med register res", res.data);
         // values.userLogin(res.data);
       })
