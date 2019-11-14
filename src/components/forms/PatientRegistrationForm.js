@@ -1,25 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import api from "../utils/api";
 
-function PatientRegistrationForm({ errors, touched, status, values }) {
-  //   const [patient, setPatient] = useState({
-  //     userName: "",
-  //     userEmail: "",
-  //     userPassword: ""
-  //   });
-
-  //   useEffect(() => {
-  //     if (status) {
-  //       setPatient([...patient, status]);
-  //     }
-  //   }, [status]);
-
-  //   const handleChange = e => {
-  //       setPatient({...patient, [e.target.name]: e.target.value})
-  //   }
-
+function PatientRegistrationForm({ errors, touched }) {
   return (
     <Form>
       <div>
