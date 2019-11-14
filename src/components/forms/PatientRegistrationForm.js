@@ -14,9 +14,11 @@ function PatientRegistrationForm({ errors, touched, status }) {
 
   useEffect(() => {
     if (status) {
-      setPatientReg(...patientReg, status);
+      setPatientReg([{ ...patientReg, status }]);
     }
   }, [status]);
+
+  console.log("patientReg", patientReg);
 
   return (
     <Form>

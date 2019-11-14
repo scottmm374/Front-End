@@ -13,7 +13,7 @@ function MedicLoginForm({ errors, touched, status }) {
 
   useEffect(() => {
     if (status) {
-      setMedLogin(...medLogin, status);
+      setMedLogin([{ ...medLogin, status }]);
     }
   }, [status]);
 
@@ -59,10 +59,9 @@ export default withFormik({
     api()
       .post("/auth/med-login", values)
       .then(res => {
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", res.data.token);
         setStatus(res.data);
         console.log("Login med", res.data);
-        // values.userLogin(res.data);
       })
       .catch(err => {
         console.log("Med login error", err);

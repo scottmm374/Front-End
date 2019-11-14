@@ -17,7 +17,7 @@ function MedRegistrationForm({ errors, touched, status }) {
 
   useEffect(() => {
     if (status) {
-      setMedReg(...medReg, status);
+      setMedReg([{ ...medReg, status }]);
     }
   }, [status]);
 
@@ -97,7 +97,6 @@ export default withFormik({
       .then(res => {
         setStatus(res.data);
         console.log(" med register res", res.data);
-        // values.userLogin(res.data);
       })
       .catch(err => {
         console.log(" med Registration error", err);

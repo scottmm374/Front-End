@@ -13,7 +13,7 @@ function PatientLoginForm({ errors, touched, status }) {
 
   useEffect(() => {
     if (status) {
-      setPatientLogin(...patientLogin, status);
+      setPatientLogin([{ ...patientLogin, status }]);
     }
   }, [status]);
 
@@ -59,10 +59,9 @@ export default withFormik({
     api()
       .post("/auth/user-login", values)
       .then(res => {
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", res.data.token);
         setStatus(res.data);
         console.log("Login patient", res.data);
-        // values.userLogin(res.data);
       })
       .catch(err => {
         console.log("Patient login error", err);
