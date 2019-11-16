@@ -59,7 +59,7 @@ export default withFormik({
     api()
       .post("/auth/user-login", values)
       .then(res => {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("medtoken", res.data.medtoken);
         setStatus(res.data);
         console.log("Login patient", res.data);
       })
