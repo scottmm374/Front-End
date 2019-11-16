@@ -4,16 +4,11 @@ import * as yup from "yup";
 import api from "../utils/api";
 
 function PatientLoginForm({ errors, touched, status }) {
-  const [patientLogin, setPatientLogin] = useState([
-    {
-      userEmail: "",
-      userPassword: ""
-    }
-  ]);
+  const [patientLogin, setPatientLogin] = useState([]);
 
   useEffect(() => {
     if (status) {
-      setPatientLogin([{ ...patientLogin, status }]);
+      setPatientLogin([...patientLogin, status]);
     }
   }, [status]);
 
@@ -61,6 +56,7 @@ export default withFormik({
       .then(res => {
         localStorage.setItem("token", res.data.token);
         setStatus(res.data);
+        // props.history.push('/')
         console.log("Login patient", res.data);
       })
       .catch(err => {

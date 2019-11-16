@@ -4,17 +4,11 @@ import * as yup from "yup";
 import api from "../utils/api";
 
 function PatientRegistrationForm({ errors, touched, status }) {
-  const [patientReg, setPatientReg] = useState([
-    {
-      userName: "",
-      userEmail: "",
-      userPassword: ""
-    }
-  ]);
+  const [patientReg, setPatientReg] = useState([]);
 
   useEffect(() => {
     if (status) {
-      setPatientReg([{ ...patientReg, status }]);
+      setPatientReg([...patientReg, status]);
     }
   }, [status]);
 
@@ -76,6 +70,7 @@ export default withFormik({
       .post("/auth/user-register", values)
       .then(res => {
         setStatus(res.data);
+        // props.history.push('/')
         console.log("register res", res.data);
       })
       .catch(err => {
