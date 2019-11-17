@@ -9,8 +9,10 @@ function PatientProtectedRoute(props) {
       {...rest}
       render={renderProps => {
         if (localStorage.getItem("token")) {
+          // Logged-in in so render component as usual
           return <Component {...renderProps} {...rest} />;
         } else {
+          // If not logged in redirect to login
           return <Redirect to="/patient-login" />;
         }
       }}

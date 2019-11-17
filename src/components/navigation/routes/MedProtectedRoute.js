@@ -8,10 +8,12 @@ function MedProtectedRoute(props) {
     <Route
       {...rest}
       render={renderProps => {
+        // Login in so render component as usual
         if (localStorage.getItem("medtoken")) {
           return <Component {...renderProps} {...rest} />;
         } else {
-          return <Redirect to="/med-signin" />;
+          // If not logged in redirect to login
+          return <Redirect to="/med-login" />;
         }
       }}
     />
