@@ -39,15 +39,15 @@ const Nav = () => {
         )}
       </nav>
 
-      {/*  Routes  if protected route, requires token to be set. */}
+      {/* Routes  if protected route, requires token to be set. */}
       {/* Med routes */}
-      <Route exact path="/med-login" component={MedicLoginForm} />
+      {/* <Route exact path="/med-login" component={MedicLoginForm} />
       <MedProtectedRoute exact path="med-logout" component={MedLogout} />
-      <Route exact path="/med-register" component={MedRegistrationForm} />
+      <Route exact path="/med-register" component={MedRegistrationForm} /> */}
       {/* <MedProtectedRoute exact path="/med-account" component={} />
 
       {/* Patient routes */}
-      <Route exact path="/patient-login" component={PatientLoginForm} />
+      {/* <Route exact path="/patient-login" component={PatientLoginForm} />
       <Route
         exact
         path="/patient-register"
@@ -57,10 +57,10 @@ const Nav = () => {
         exact
         path="/patient-logout"
         component={PatientLogout}
-      />
+      /> */}
       {/* <PatientProtectedRoute exact path="/patient-account" component={} />  */}
     </div>
   );
 };
 
-export default withRouter(Nav);
+export default Nav;
