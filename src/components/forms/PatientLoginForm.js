@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import api from "../utils/api";
 
@@ -25,6 +26,7 @@ function PatientLoginForm({ errors, touched, status }) {
         <Field type="text" name="userPassword" placeholder="userPassword" />
       </div>
       <button type="submit">Login</button>
+      <h3>New Patient?</h3> <Link to="patient-register">Register</Link>
     </Form>
   );
 }

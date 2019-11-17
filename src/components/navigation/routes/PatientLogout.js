@@ -1,12 +1,12 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 
+// Working correctly, removing token and redirecting to login
+
 function PatientLogout(props) {
-  // Nothing has to happen on the server to log out,
-  // just delete the token
   localStorage.removeItem("token");
 
-  return <Redirect to="/patient-signin" />;
+  return <Redirect to="/patient-login" />;
 }
 
 export default PatientLogout;

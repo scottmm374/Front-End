@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 import api from "../utils/api";
 
-function MedRegistrationForm({ errors, touched, status }) {
+function MedRegistrationForm({ errors, touched, status, history }) {
   const [medReg, setMedReg] = useState([]);
 
   useEffect(() => {
@@ -87,7 +87,7 @@ export default withFormik({
       .post("/auth/med-register", values)
       .then(res => {
         setStatus(res.data);
-        // props.history.push('/')
+        // props.history.push("/med-login");
         console.log(" med register res", res.data);
       })
       .catch(err => {

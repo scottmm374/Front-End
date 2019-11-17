@@ -70,7 +70,7 @@ export default withFormik({
       .post("/auth/user-register", values)
       .then(res => {
         setStatus(res.data);
-        // props.history.push('/')
+        // props.history.push('/patient-login')
         console.log("register res", res.data);
       })
       .catch(err => {

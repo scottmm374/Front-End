@@ -2,11 +2,10 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 
 function MedLogout(props) {
-  // Nothing has to happen on the server to log out,
-  // just delete the token
+  // Token is not being removed, not sure why. Redirect to login is working.
   localStorage.removeItem("medtoken");
 
-  return <Redirect to="/med-signin" />;
+  return <Redirect to="/med-login" />;
 }
 
 export default MedLogout;
