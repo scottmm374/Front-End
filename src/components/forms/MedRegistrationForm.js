@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
-import api from "../utils/api";
+import medApi from "../utils/medApi";
 
 function MedRegistrationForm({ errors, touched, status, history }) {
   const [medReg, setMedReg] = useState([]);
@@ -83,7 +83,7 @@ export default withFormik({
   handleSubmit: (values, { setStatus }) => {
     console.log("Med Reg", values);
 
-    api()
+    medApi()
       .post("/auth/med-register", values)
       .then(res => {
         setStatus(res.data);

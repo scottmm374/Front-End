@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import api from "../utils/api";
+import medApi from "../utils/medApi";
 
 function MedicLoginForm({ errors, touched, status }) {
   const [medLogin, setMedLogin] = useState([]);
@@ -56,7 +56,7 @@ export default withFormik({
   handleSubmit: (values, { setStatus }) => {
     console.log(" med login", values);
 
-    api()
+    medApi()
       .post("/auth/med-login", values)
       .then(res => {
         localStorage.setItem("medtoken", res.data.medtoken);
