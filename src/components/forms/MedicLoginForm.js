@@ -37,6 +37,7 @@ function MedicLoginForm({ errors, touched, status }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
+      history: values.history,
       medicEmail: values.medicEmail || "",
       medicPassword: values.medicPassword || ""
     };
@@ -61,7 +62,7 @@ export default withFormik({
       .then(res => {
         localStorage.setItem("medtoken", res.data.medtoken);
         setStatus(res.data);
-        // props.history.push("/");
+        values.history.push("/med-account");
         console.log("Login med", res.data);
       })
       .catch(err => {

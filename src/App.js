@@ -19,17 +19,29 @@ function App() {
       <Route exact path="/" component={LandingPage} />
       {/*  Routes  if protected route, requires token to be set. */}
       {/* Med routes */}
-      <Route exact path="/med-login" component={MedicLoginForm} />
+      <Route
+        exact
+        path="/med-login"
+        render={props => <MedicLoginForm {...props} />}
+      />
       <MedProtectedRoute exact path="med-logout" component={MedLogout} />
-      <Route exact path="/med-register" component={MedRegistrationForm} />
+      <Route
+        exact
+        path="/med-register"
+        render={props => <MedRegistrationForm {...props} />}
+      />
       {/* <MedProtectedRoute exact path="/med-account" component={} />
 
       {/* Patient routes */}
-      <Route exact path="/patient-login" component={PatientLoginForm} />
+      <Route
+        exact
+        path="/patient-login"
+        render={props => <PatientLoginForm {...props} />}
+      />
       <Route
         exact
         path="/patient-register"
-        component={PatientRegistrationForm}
+        render={props => <PatientRegistrationForm {...props} />}
       />
       <PatientProtectedRoute
         exact

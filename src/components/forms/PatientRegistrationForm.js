@@ -38,6 +38,7 @@ function PatientRegistrationForm({ errors, touched, status }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
+      // history: values.history,
       userName: values.userName || "",
       userEmail: values.userEmail || "",
       userPassword: values.userPassword || ""
@@ -70,7 +71,8 @@ export default withFormik({
       .post("/auth/user-register", values)
       .then(res => {
         setStatus(res.data);
-        // props.history.push('/patient-login')
+        // Push throws server error
+        // values.history.push("/patient-login");
         console.log("register res", res.data);
       })
       .catch(err => {

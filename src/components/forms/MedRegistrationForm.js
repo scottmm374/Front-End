@@ -53,6 +53,7 @@ function MedRegistrationForm({ errors, touched, status, history }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
+      // history: values.history,
       medicFirstName: values.medicFirstName || "",
       medicLastName: values.medicLastName || "",
       medicEmail: values.medicEmail || "",
@@ -87,7 +88,8 @@ export default withFormik({
       .post("/auth/med-register", values)
       .then(res => {
         setStatus(res.data);
-        // props.history.push("/med-login");
+        //push throws server error
+        // values.history.push("/med-login");
         console.log(" med register res", res.data);
       })
       .catch(err => {
