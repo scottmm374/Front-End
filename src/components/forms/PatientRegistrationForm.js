@@ -4,17 +4,11 @@ import * as yup from "yup";
 import api from "../utils/api";
 
 function PatientRegistrationForm({ errors, touched, status }) {
-  const [patientReg, setPatientReg] = useState([
-    {
-      userName: "",
-      userEmail: "",
-      userPassword: ""
-    }
-  ]);
+  const [patientReg, setPatientReg] = useState([]);
 
   useEffect(() => {
     if (status) {
-      setPatientReg([{ ...patientReg, status }]);
+      setPatientReg([...patientReg, status]);
     }
   }, [status]);
 
@@ -44,6 +38,7 @@ function PatientRegistrationForm({ errors, touched, status }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
+      // history: values.history,
       userName: values.userName || "",
       userEmail: values.userEmail || "",
       userPassword: values.userPassword || ""
@@ -76,6 +71,8 @@ export default withFormik({
       .post("/auth/user-register", values)
       .then(res => {
         setStatus(res.data);
+        // Push throws server error
+        // values.history.push("/patient-login");
         console.log("register res", res.data);
       })
       .catch(err => {

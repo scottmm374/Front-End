@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
-import api from "../utils/api";
+import medApi from "../utils/medApi";
 
-function MedRegistrationForm({ errors, touched, status }) {
-  const [medReg, setMedReg] = useState([
-    {
-      medicFirstName: "",
-      medicLastName: "",
-      medicEmail: "",
-      medicPassword: "",
-      company: "",
-      position: ""
-    }
-  ]);
+function MedRegistrationForm({ errors, touched, status, history }) {
+  const [medReg, setMedReg] = useState([]);
 
   useEffect(() => {
     if (status) {
-      setMedReg([{ ...medReg, status }]);
+      setMedReg([...medReg, status]);
     }
   }, [status]);
 
@@ -62,6 +53,7 @@ function MedRegistrationForm({ errors, touched, status }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
+      // history: values.history,
       medicFirstName: values.medicFirstName || "",
       medicLastName: values.medicLastName || "",
       medicEmail: values.medicEmail || "",
@@ -92,10 +84,12 @@ export default withFormik({
   handleSubmit: (values, { setStatus }) => {
     console.log("Med Reg", values);
 
-    api()
+    medApi()
       .post("/auth/med-register", values)
       .then(res => {
         setStatus(res.data);
+        //push throws server error
+        // values.history.push("/med-login");
         console.log(" med register res", res.data);
       })
       .catch(err => {
