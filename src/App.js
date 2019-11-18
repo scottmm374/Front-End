@@ -25,7 +25,7 @@ function App() {
         path="/med-login"
         render={props => <MedicLoginForm {...props} />}
       />
-      <MedProtectedRoute exact path="med-logout" component={MedLogout} />
+      <MedProtectedRoute exact path="/med-logout" component={MedLogout} />
       <Route
         exact
         path="/med-register"

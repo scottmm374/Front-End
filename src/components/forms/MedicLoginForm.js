@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
+import history from "../../history";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import medApi from "../utils/medApi";
+import {
+  Master,
+  LightCard,
+  FlexWarp,
+  Button,
+  FormContainer,
+  NewLable
+} from "../utils/styledComponents";
 
 function MedicLoginForm({ errors, touched, status }) {
   const [medLogin, setMedLogin] = useState([]);
@@ -13,31 +22,43 @@ function MedicLoginForm({ errors, touched, status }) {
     }
   }, [status]);
 
-  console.log("status", status);
-  console.log("state", medLogin);
+  // console.log("status", status);
+  // console.log("state", medLogin);
 
   return (
-    <Form>
-      <div>
-        {touched.medicEmail && errors.medicEmail && <p>{errors.medicEmail}</p>}
-        <Field type="text" name="medicEmail" placeholder="medicEmail" />
-      </div>
-      <div>
-        {touched.medicPassword && errors.medicPassword && (
-          <p>{errors.medicPassword}</p>
-        )}
-        <Field type="text" name="medicPassword" placeholder="medicPassword" />
-      </div>
-      <button type="submit">Login</button>
-      <h3>New Provider?</h3> <Link to="med-register">Register</Link>
-    </Form>
+    <LightCard>
+      <Form>
+        <FlexWarp>
+          <FormContainer>
+            <NewLable htmlFor="medicEmail">Email</NewLable>
+            {touched.medicEmail && errors.medicEmail && (
+              <p>{errors.medicEmail}</p>
+            )}
+            <Field type="text" name="medicEmail" placeholder="medicEmail" />
+          </FormContainer>
+          <FormContainer>
+            <NewLable htmlFor="medicPassword">Password</NewLable>
+            {touched.medicPassword && errors.medicPassword && (
+              <p>{errors.medicPassword}</p>
+            )}
+            <Field
+              type="text"
+              name="medicPassword"
+              placeholder="medicPassword"
+            />
+          </FormContainer>
+          <Button type="submit">Login</Button>
+          <h3>New Provider?</h3> <Link to="med-register">Register</Link>
+        </FlexWarp>
+      </Form>
+    </LightCard>
   );
 }
 
 export default withFormik({
   mapPropsToValues: values => {
     return {
-      history: values.history,
+      // history: values.history,
       medicEmail: values.medicEmail || "",
       medicPassword: values.medicPassword || ""
     };
@@ -62,7 +83,10 @@ export default withFormik({
       .then(res => {
         localStorage.setItem("medtoken", res.data.medtoken);
         setStatus(res.data);
-        values.history.push("/med-account");
+        //* This worked like this and redirected?
+        // *values.history.push("/med-account");
+        //! This also works fine? But not for patient login-in
+        history.push("/med-account");
         console.log("Login med", res.data);
       })
       .catch(err => {
