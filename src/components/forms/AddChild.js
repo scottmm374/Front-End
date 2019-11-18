@@ -3,90 +3,70 @@ import styled from "styled-components";
 import { withFormik, Form, Field, useField } from "formik";
 import * as Yup from "yup";
 import api from "../utils/api";
+import {
+  ButtonAddChild,
+  LightCardAddChild,
+  BetterField,
+  NewLable,
+  FormContainerAddChild,
+  FlexWarpAddChild
+} from "../utils/styledComponents.js";
 
-const AddChild = ({ values, touched, errors }) => {
-  console.log(values);
-  const AddChildDiv = styled.div`
-      margin: 0 auto;
-      width: 50%;
-      
+const AddChild = ({ touched, errors }) => {
+  // console.log(values);
 
-      form {
-        padding: 3%;
-        border: solid 1px black;
-        background-color: white;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        height: 50%;
-
-      
-  
-      }
-`;
-
-  const InputDiv = styled.div`
-    width: 45%;
-    min-width: 200px;
-
-    label {
-      display: flex;
-      flex-direction: column;
-
-      &:first-child {
-        font-weight: bold; 
-        text-align: left; 
-      }
-    }
-`;
-
-  const AddChildButton = styled.button`
-    margin: 2% 40%;
-    padding: 20px;
-    background-color: teal;
-`;
-  /*
-  const radioChoices = [{ label: "Male", name: "male", id: "male", defaultChoice: true },
-  { label: "Female", name: "female", id: "female", defaultChoice: false }];
-  */
   return (
-    <AddChildDiv>
-      <h2>Add Child</h2>
+    <LightCardAddChild>
       <Form>
-        <InputDiv>
-          <label>
-            First Name
+        <FlexWarpAddChild>
+          <FormContainerAddChild>
+            <NewLable htmlFor="patientEmail">Patient Email</NewLable>
+            <Field
+                type="email"
+                name="patientEmail"
+                placeholder="Patient Email"
+              />
+              {touched.patientEmail && errors.patientEmail && (
+                <p>{errors.patientEmail}</p>
+              )}
+          </FormContainerAddChild>
+
+          <FormContainerAddChild>
+            <NewLable htmlFor="firstName">Patient ID</NewLable>
+            <Field
+                type="text"
+                name="userId"
+                placeholder="Patient ID"
+            />
+            {touched.userId && errors.userId && <p>{errors.userId}</p>}
+          </FormContainerAddChild>
+
+          <FormContainerAddChild>
+            <NewLable htmlFor="firstName">First Name</NewLable>
             <Field
               type="text"
               name="firstName"
               placeholder="First Name"
-              value={values.firstName}
             />
             {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
-          </label>
-        </InputDiv>
-
-        <InputDiv>
-          <label>
-            Last Name
-                 <Field
+          </FormContainerAddChild>
+          
+          <FormContainerAddChild>
+            <NewLable htmlFor="lastName">Last Name</NewLable>
+            <Field
               type="text"
               name="lastName"
               placeholder="Last Name"
-              value={values.lastName}
             />
             {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
-          </label>
-        </InputDiv>
+          </FormContainerAddChild>
 
-        <InputDiv>
-          <label>
-            Age
-                  <Field
+          <FormContainerAddChild>
+            <NewLable htmlFor="age">Age</NewLable>
+            <Field
               component="select"
               name="age"
               placeholder="Age (years)"
-              value={values.age}
             >
               <option>Age (years)</option>
               <option value="0">0</option>
@@ -109,100 +89,49 @@ const AddChild = ({ values, touched, errors }) => {
               <option value="17">17</option>
             </Field>
             {touched.age && errors.age && <p>{errors.age}</p>}
-          </label>
-        </InputDiv>
+          </FormContainerAddChild>
 
-        {/*
-        <InputDiv>
-          <label>
-            Gender
-            <div>
-              <RadioButtons name="gender" choices={radioChoices} value={values.gender} />
-              {touched.gender && errors.gender && <p>{errors.gender}</p>}
-            </div>
-          </label>
-        </InputDiv>
-        */}
-
-        <InputDiv>  
-          <label>
-            Gender
+          <FormContainerAddChild>
+            <NewLable htmlFor="gender">Gender</NewLable>
             <Field
-              type="text"
+              component="select"
               name="gender"
               placeholder="Gender"
-              value={values.gender}
-            />
+            >
+              <option>Age (years)</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </Field>
             {touched.gender && errors.gender && <p>{errors.gender}</p>}
-          </label>
-        </InputDiv>
+          </FormContainerAddChild>
 
-        <InputDiv>
-          <label>
-            Weight
-                  <Field
+          <FormContainerAddChild>
+            <NewLable htmlFor="weight">Weight</NewLable>
+            <Field
               type="text"
               name="weight"
               placeholder="Weight (Lbs)"
-              value={values.weight}
             />
             {touched.weight && errors.weight && <p>{errors.weight}</p>}
-          </label>
-        </InputDiv>
-
-        <InputDiv>
-          <label>
-            Height
-                  <Field
+          </FormContainerAddChild>
+          <FormContainerAddChild>
+            <NewLable htmlFor="height">Height</NewLable>
+            <Field
               type="text"
               name="height"
               placeholder="Height (inches)"
-              value={values.height}
             />
             {touched.height && errors.height && <p>{errors.height}</p>}
-          </label>
-        </InputDiv>
-        <AddChildButton type="submit">Add Child</AddChildButton>
+          </FormContainerAddChild>
+          <ButtonAddChild type="submit">Add</ButtonAddChild>
+        </FlexWarpAddChild>
       </Form>
-    </AddChildDiv>
-  );
-};
-/* Couldn't get it to work right
-function RadioButton(props) {
-  const [field, meta] = useField(props);
-  console.log(field);
-  return (
-    <>
-      <input 
-        id={props.choice.id}
-        value={props.value}
-        checked={props.value === "" ? props.choice.defaultChoice : props.choice.id === props.value  }
-        {...field} 
-        {...props}/>
-      <label htmlFor={props.choice.id}>{props.choice.label}</label>
-    </>
+    </LightCardAddChild >
   );
 };
 
-function RadioButtons({value, error, touched, id, label}) {
-  const [field] = useField(props);
-  field.type = "radio";
-  return (
-    <>
-      {props.choices.map((e) => {
-        let checked;
-        e.name === field.value ? checked = true : checked = e.defaultChoice;
-        return (
-          <RadioButton label="test" {...field} checked={checked} choice={e}/>
-          
-        );
-      })}
-    </>
-  );
-};
-*/
 const FormikAddChildForm = withFormik({
-  mapPropsToValues({ firstName, lastName, age, gender, weight, height, patientEmail, patientPhone, isChild }) {
+  mapPropsToValues({ firstName, lastName, age, gender, weight, height, patientEmail, /*patientPhone,*/ isChild, userID }) {
     return {
       firstName: firstName || "",
       lastName: lastName || "",
@@ -211,8 +140,9 @@ const FormikAddChildForm = withFormik({
       weight: weight || "",
       height: height || "",
       patientEmail: patientEmail || "",
-      patientPhone: patientPhone || "",
-      isChild: isChild || true
+      //patientPhone: patientPhone || "",
+      isChild: isChild || true,
+      userID: userID || ""
     };
   },
 
@@ -223,13 +153,15 @@ const FormikAddChildForm = withFormik({
     gender: Yup.string().required("Select a gender."),
     weight: Yup.string().required("Enter a weight in pounds."),
     height: Yup.string().required("Enter a height in inches."),
-    patientEmail: Yup.string(),
+    patientEmail: Yup.string().required("Please enter Parents Email"),
+    /*patientPhone: Yup.string(),*/
     isChild: Yup.boolean()
   }),
 
   handleSubmit(values) {
+    console.log(values);
     api()
-      .post("/", values)
+      .post("/user/addpatient", values)
       .then(res => {
         console.log(res);
       })
