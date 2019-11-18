@@ -10,6 +10,7 @@ import MedLogout from "./components/navigation/routes/MedLogout";
 import MedProtectedRoute from "./components/navigation/routes/MedProtectedRoute";
 import PatientProtectedRoute from "./components/navigation/routes/PatientProtectedRoute";
 import Nav from "./components/navigation/Nav";
+import ParentHome from "./components/views/ParentHome";
 import "./App.css";
 
 function App() {
@@ -48,7 +49,11 @@ function App() {
         path="/patient-logout"
         component={PatientLogout}
       />
-      {/* <PatientProtectedRoute exact path="/patient-account" component={} />  */}
+      <PatientProtectedRoute
+        exact
+        path="/patient-account"
+        component={ParentHome}
+      />
     </div>
   );
 }
