@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
+import history from "../../history";
 import * as yup from "yup";
 import medApi from "../utils/medApi";
 
-function MedRegistrationForm({ errors, touched, status, history }) {
+function MedRegistrationForm({ errors, touched, status }) {
   const [medReg, setMedReg] = useState([]);
 
   useEffect(() => {
@@ -88,8 +89,8 @@ export default withFormik({
       .post("/auth/med-register", values)
       .then(res => {
         setStatus(res.data);
-        //push throws server error
-        // values.history.push("/med-login");
+        // this causes Nav to show incorrect navigation and saves as Token rather then medtoken
+        history.push("/med-login");
         console.log(" med register res", res.data);
       })
       .catch(err => {

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
+import history from "../../history";
 import * as yup from "yup";
 import api from "../utils/api";
 
-function PatientRegistrationForm({ errors, touched, status }) {
+function PatientRegistrationForm({ errors, touched, status, history }) {
   const [patientReg, setPatientReg] = useState([]);
 
   useEffect(() => {
@@ -12,7 +13,7 @@ function PatientRegistrationForm({ errors, touched, status }) {
     }
   }, [status]);
 
-  console.log("patientReg", patientReg);
+  // console.log("patientReg", patientReg);
 
   return (
     <Form>
@@ -72,7 +73,8 @@ export default withFormik({
       .then(res => {
         setStatus(res.data);
         // Push throws server error
-        // values.history.push("/patient-login");
+        history.push("/patient-login");
+
         console.log("register res", res.data);
       })
       .catch(err => {
