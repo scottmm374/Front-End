@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export function getToken() {
-  return localStorage.getItem("medtoken");
+  return localStorage.getItem("token");
 }
 
 export default function() {
