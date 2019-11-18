@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import * as yup from "yup";
 import medApi from "../utils/medApi";
 import {
-  Master,
   LightCard,
   FlexWarp,
   Button,
@@ -20,6 +19,7 @@ function MedicLoginForm({ errors, touched, status }) {
     if (status) {
       setMedLogin([...medLogin, status]);
     }
+    // eslint-disable-next-line
   }, [status]);
 
   // console.log("status", status);

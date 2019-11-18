@@ -11,6 +11,7 @@ function PatientRegistrationForm({ errors, touched, status, history }) {
     if (status) {
       setPatientReg([...patientReg, status]);
     }
+    // eslint-disable-next-line
   }, [status]);
 
   // console.log("patientReg", patientReg);

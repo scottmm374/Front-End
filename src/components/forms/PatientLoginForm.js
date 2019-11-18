@@ -12,6 +12,7 @@ function PatientLoginForm({ errors, touched, status }) {
     if (status) {
       setPatientLogin([...patientLogin, status]);
     }
+    // eslint-disable-next-line
   }, [status]);
 
   return (

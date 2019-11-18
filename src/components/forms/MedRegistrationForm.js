@@ -11,6 +11,7 @@ function MedRegistrationForm({ errors, touched, status }) {
     if (status) {
       setMedReg([...medReg, status]);
     }
+    // eslint-disable-next-line
   }, [status]);
 
   return (
