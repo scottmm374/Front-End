@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, withRouter } from "react-router-dom";
+import LandingPage from "./components/views/LandingPage";
+import MedicLoginForm from "./components/forms/MedicLoginForm";
+import MedRegistrationForm from "./components/forms/MedRegistrationForm";
+import PatientLoginForm from "./components/forms/PatientLoginForm";
+import PatientRegistrationForm from "./components/forms/PatientRegistrationForm";
+import PatientLogout from "./components/navigation/routes/PatientLogout";
+import MedLogout from "./components/navigation/routes/MedLogout";
+import MedProtectedRoute from "./components/navigation/routes/MedProtectedRoute";
+import PatientProtectedRoute from "./components/navigation/routes/PatientProtectedRoute";
+import Nav from "./components/navigation/Nav";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+      <Route exact path="/" component={LandingPage} />
+      {/*  Routes  if protected route, requires token to be set. */}
+      {/* Med routes */}
+      <Route
+        exact
+        path="/med-login"
+        render={props => <MedicLoginForm {...props} />}
+      />
+      <MedProtectedRoute exact path="med-logout" component={MedLogout} />
+      <Route
+        exact
+        path="/med-register"
+        render={props => <MedRegistrationForm {...props} />}
+      />
+      {/* <MedProtectedRoute exact path="/med-account" component={} />
+
+      {/* Patient routes */}
+      <Route
+        exact
+        path="/patient-login"
+        render={props => <PatientLoginForm {...props} />}
+      />
+      <Route
+        exact
+        path="/patient-register"
+        render={props => <PatientRegistrationForm {...props} />}
+      />
+      <PatientProtectedRoute
+        exact
+        path="/patient-logout"
+        component={PatientLogout}
+      />
+      {/* <PatientProtectedRoute exact path="/patient-account" component={} />  */}
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);

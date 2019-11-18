@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
-import api from "../utils/api";
+import medApi from "../utils/medApi";
 
 function MedicLoginForm({ errors, touched, status }) {
-  const [medLogin, setMedLogin] = useState([
-    {
-      medicEmail: "",
-      medicPassword: ""
-    }
-  ]);
+  const [medLogin, setMedLogin] = useState([]);
 
   useEffect(() => {
     if (status) {
-      setMedLogin([{ ...medLogin, status }]);
+      setMedLogin([...medLogin, status]);
     }
   }, [status]);
+
+  console.log("status", status);
+  console.log("state", medLogin);
 
   return (
     <Form>
@@ -30,6 +29,7 @@ function MedicLoginForm({ errors, touched, status }) {
         <Field type="text" name="medicPassword" placeholder="medicPassword" />
       </div>
       <button type="submit">Login</button>
+      <h3>New Provider?</h3> <Link to="med-register">Register</Link>
     </Form>
   );
 }
@@ -37,6 +37,7 @@ function MedicLoginForm({ errors, touched, status }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
+      history: values.history,
       medicEmail: values.medicEmail || "",
       medicPassword: values.medicPassword || ""
     };
@@ -56,11 +57,12 @@ export default withFormik({
   handleSubmit: (values, { setStatus }) => {
     console.log(" med login", values);
 
-    api()
+    medApi()
       .post("/auth/med-login", values)
       .then(res => {
         localStorage.setItem("medtoken", res.data.medtoken);
         setStatus(res.data);
+        values.history.push("/med-account");
         console.log("Login med", res.data);
       })
       .catch(err => {
