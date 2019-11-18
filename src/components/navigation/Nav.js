@@ -1,15 +1,7 @@
 import React from "react";
-import { Route, withRouter, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { getMedToken } from "../utils/medApi";
 import { getToken } from "../utils/api";
-import PatientLoginForm from "../forms/PatientLoginForm";
-import MedicLoginForm from "../forms/MedicLoginForm";
-import PatientRegistrationForm from "../forms/PatientRegistrationForm";
-import MedRegistrationForm from "../forms/MedRegistrationForm";
-import MedProtectedRoute from "./routes/MedProtectedRoute";
-import PatientProtectedRoute from "./routes/PatientProtectedRoute";
-import MedLogout from "./routes/MedLogout";
-import PatientLogout from "./routes/PatientLogout";
 
 const Nav = () => {
   const MedSignedIn = getMedToken();
