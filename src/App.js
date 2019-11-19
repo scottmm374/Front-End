@@ -31,6 +31,7 @@ function App() {
         path="/med-register"
         render={props => <MedRegistrationForm {...props} />}
       />
+      {/* // * Place Med landing page in this component */}
       {/* <MedProtectedRoute exact path="/med-account" component={} />
 
       {/* Patient routes */}
