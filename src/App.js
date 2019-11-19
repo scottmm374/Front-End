@@ -11,6 +11,7 @@ import MedProtectedRoute from "./components/navigation/routes/MedProtectedRoute"
 import PatientProtectedRoute from "./components/navigation/routes/PatientProtectedRoute";
 import Nav from "./components/navigation/Nav";
 import ParentHome from "./components/views/ParentHome";
+import ChildHome from "./components/views/ChildHome";
 import "./App.css";
 
 function App() {
@@ -54,6 +55,12 @@ function App() {
         exact
         path="/patient-account"
         component={ParentHome}
+       // render={props => <ParentHome {...props} />}
+      />
+      <Route
+        exact
+        path="/patient-account/:id"
+        render={props => <ChildHome {...props} />}
       />
     </div>
   );
