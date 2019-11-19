@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const Master = styled.div`
@@ -50,3 +51,24 @@ export const NewLable = styled.label`
   margin: 0px 0px 5px 0px;
   color: #333333;
 `;
+
+/* For add Child form */
+export const LightCardAddChild = styled(LightCard)`
+  margin: 0 auto;
+  width: 50%;
+`;
+
+export const FlexWarpAddChild = styled(FlexWarp)`
+  flex-wrap: wrap;
+`;
+
+export const FormContainerAddChild = styled(FormContainer)`
+  margin-left: 10%;
+  margin-right: 10%;
+`;
+
+export const ButtonAddChild = styled(Button)`
+  margin-left: 40%;
+  margin-right: 40%;
+`;
+
