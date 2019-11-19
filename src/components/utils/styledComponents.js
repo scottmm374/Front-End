@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const Master = styled.div`
@@ -70,3 +71,4 @@ export const ButtonAddChild = styled(Button)`
   margin-left: 40%;
   margin-right: 40%;
 `;
+

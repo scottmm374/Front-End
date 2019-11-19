@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
+import history from "../../history";
 import * as yup from "yup";
 import api from "../utils/api";
 
-function PatientRegistrationForm({ errors, touched, status }) {
-  const [patientReg, setPatientReg] = useState([
-    {
-      userName: "",
-      userEmail: "",
-      userPassword: ""
-    }
-  ]);
+function PatientRegistrationForm({ errors, touched, status, history }) {
+  const [patientReg, setPatientReg] = useState([]);
 
   useEffect(() => {
     if (status) {
-      setPatientReg([{ ...patientReg, status }]);
+      setPatientReg([...patientReg, status]);
     }
+    // eslint-disable-next-line
   }, [status]);
 
-  console.log("patientReg", patientReg);
+  // console.log("patientReg", patientReg);
 
   return (
     <Form>
@@ -44,6 +40,7 @@ function PatientRegistrationForm({ errors, touched, status }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
+      // history: values.history,
       userName: values.userName || "",
       userEmail: values.userEmail || "",
       userPassword: values.userPassword || ""
@@ -76,6 +73,9 @@ export default withFormik({
       .post("/auth/user-register", values)
       .then(res => {
         setStatus(res.data);
+        // Push throws server error
+        history.push("/patient-login");
+
         console.log("register res", res.data);
       })
       .catch(err => {
