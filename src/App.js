@@ -55,11 +55,10 @@ function App() {
         exact
         path="/patient-account"
         component={ParentHome}
-       // render={props => <ParentHome {...props} />}
       />
       <Route
         exact
-        path="/patient-account/:id"
+        path="/child-account/:id"
         render={props => <ChildHome {...props} />}
       />
     </div>

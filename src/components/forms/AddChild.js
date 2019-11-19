@@ -131,7 +131,7 @@ const AddChild = ({ touched, errors }) => {
 };
 
 const FormikAddChildForm = withFormik({
-  mapPropsToValues({ firstName, lastName, age, gender, weight, height, patientEmail, /*patientPhone,*/ isChild, userID }) {
+  mapPropsToValues({ firstName, lastName, age, gender, weight, height, patientEmail, /*patientPhone,*/ isChild, userId }) {
     return {
       firstName: firstName || "",
       lastName: lastName || "",
@@ -142,7 +142,7 @@ const FormikAddChildForm = withFormik({
       patientEmail: patientEmail || "",
       //patientPhone: patientPhone || "",
       isChild: isChild || true,
-      userID: userID || ""
+      userId: userId || ""
     };
   },
 
