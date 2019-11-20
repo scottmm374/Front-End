@@ -1,10 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import { getMedToken } from "../utils/medApi";
 import { getToken } from "../utils/api";
 import Logo from "../../images/Logo.svg";
 
-import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 
 const Navigation = () => {
   const MedSignedIn = getMedToken();
@@ -18,19 +18,19 @@ const Navigation = () => {
 
         <Nav className="mr-auto" navbar>
           <NavItem>
-            {MedSignedIn && <NavLink to="med-account">Med Account</NavLink>}
+            {MedSignedIn && <NavLink href="med-account">Med Account</NavLink>}
           </NavItem>
           <NavItem>
-            {MedSignedIn && <NavLink to="med-logout">Med Logout</NavLink>}
+            {MedSignedIn && <NavLink href="med-logout">Med Logout</NavLink>}
           </NavItem>
           <NavItem>
             {PatientSignedIn && (
-              <NavLink to="patient-account">Patient Account</NavLink>
+              <NavLink href="patient-account">Patient Account</NavLink>
             )}
           </NavItem>
           <NavItem>
             {PatientSignedIn && (
-              <NavLink to="patient-logout">Patient Logout</NavLink>
+              <NavLink href="patient-logout">Patient Logout</NavLink>
             )}
           </NavItem>
         </Nav>
