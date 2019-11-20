@@ -60,25 +60,9 @@ export default withFormik({
       .post("/auth/user-login", values)
       .then(res => {
         localStorage.setItem("token", res.data.token);
+        // localStorage.setItem("parentId", res.data.id);
         setStatus(res.data);
         history.push("/patient-account");
-
-        // ! throws error (Patient login error Error: "Element type is invalid: expected a string (for built-in components)
-        //* values.history.push("/patient-account"); Note Registration works fine
-        //  or a class/function (for composite components) but
-        //  got: object. You likely forgot to export your
-        //  component from the file it's defined in,
-        //  or you might have mixed up default and named imports.
-
-        // Check the render method of `Context.Consumer`.")
-
-        // ! Error: Element type is invalid: expected a string (for built-in components)
-        //* history.push("/patient-account"); Note Registration works fine
-        // or a class/function (for composite components)
-        // but got: object. You likely forgot to export your
-        // component from the file it's defined in, or you might have mixed up default and named imports.
-        // Check the render method of `Context.Consumer`.
-        // history.push("/patient-account");
         console.log("Login patient", res.data);
       })
       .catch(err => {
