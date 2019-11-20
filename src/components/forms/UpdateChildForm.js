@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { withformik, form, input } from "formik";
-import history from "../../history";
-import * as Yup from "yup";
 import api from "../utils/api";
 import {
   ButtonAddChild,
@@ -11,26 +8,43 @@ import {
   FlexWarpAddChild
 } from "../utils/styledComponents.js";
 
-const UpdateChildForm = () => {
+const UpdateChildForm = props => {
   const [editChild, setEditChild] = useState({
     firstName: "",
     lastName: "",
-    age: 0,
+    age: "",
     gender: "",
     weight: "",
     height: "",
-    patientEmail: "mscott@gmail.com",
-    patientPhone: "123456789",
+    patientEmail: "",
     isChild: true,
-    userId: 34
+    userId: ""
   });
+
+  console.log("history", props);
+
+  useEffect(() => {
+    api()
+      .get("/user/patient/49")
+      .then(res => {
+        setEditChild(res.data);
+        console.log("get child", res.data);
+      })
+      .catch(err => {
+        console.log("get kid", err);
+      });
+  }, []);
+
+  // const patientEmail = localStorage.getItem("userEmail");
+  // const userId = localStorage.getItem("id");
+  // const userEmail = localStorage.getItem("userEmail")
 
   // const id = history.match.params.id
 
   const handleUpdate = e => {
     e.preventDefault();
     api()
-      .put("/user/patient/22", editChild)
+      .put("/user/patient/49", editChild)
       .then(res => {
         console.log("editChild", res.data);
       })
@@ -43,23 +57,18 @@ const UpdateChildForm = () => {
     setEditChild({ ...editChild, [e.target.name]: e.target.value });
   };
 
+  console.log("editChild", editChild);
+
   return (
     <div>
       <form onSubmit={handleUpdate}>
         <label>Patient Email</label>
         <input
-          type="email"
+          type="text"
           name="patientEmail"
           placeholder="Parent Email"
+          disabled
           value={editChild.patientEmail}
-          onChange={handleChange}
-        />
-        <label>Patient phone</label>
-        <input
-          type="text"
-          name="patientPhone"
-          placeholder="Parent Phone"
-          value={editChild.patientPhone}
           onChange={handleChange}
         />
 
@@ -67,6 +76,7 @@ const UpdateChildForm = () => {
         <input
           type="text"
           name="userId"
+          disabled
           placeholder="Patient ID"
           value={editChild.userId}
           onChange={handleChange}
