@@ -41,11 +41,10 @@ const UpdateChildForm = props => {
   // const userId = localStorage.getItem("id");
   // const userEmail = localStorage.getItem("userEmail")
 
-  // const id = history.match.params.id
-
   const handleUpdate = e => {
     e.preventDefault();
     api()
+      // .put((`/user/patient/${props.match.params.id}`), editChild)
       .put("/user/patient/49", editChild)
       .then(res => {
         history.push(`/patient-home/${res.data.id}`);
