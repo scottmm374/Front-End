@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
-import { withFormik, Form, Field, useField } from "formik";
+//import styled from "styled-components";
+import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import api from "../utils/api";
 import {
@@ -131,7 +131,7 @@ const AddChild = ({ touched, errors }) => {
 };
 
 const FormikAddChildForm = withFormik({
-  mapPropsToValues({ firstName, lastName, age, gender, weight, height, patientEmail, /*patientPhone,*/ isChild, userID }) {
+  mapPropsToValues({ firstName, lastName, age, gender, weight, height, patientEmail, /*patientPhone,*/ isChild, userId }) {
     return {
       firstName: firstName || "",
       lastName: lastName || "",
@@ -142,7 +142,7 @@ const FormikAddChildForm = withFormik({
       patientEmail: patientEmail || "",
       //patientPhone: patientPhone || "",
       isChild: isChild || true,
-      userID: userID || ""
+      userId: userId || ""
     };
   },
 
