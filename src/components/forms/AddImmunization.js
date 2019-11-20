@@ -10,7 +10,7 @@ import {
 import styled from "styled-components";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
-import api from "../utils/api.js";
+import getMedToken from "../utils/medApi.js";
 
 const AddImmunization = ({ touched, errors, isSubmitting }) => {
   return (
@@ -85,7 +85,7 @@ export default withFormik({
   }),
   //Post Works
   handleSubmit: (values, { setSubmitting, resetForm }) => {
-    api()
+    getMedToken()
       .post("/record/addImmunization", values)
       .then(res => {
         console.log("it worked:", res.data);
