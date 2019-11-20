@@ -14,7 +14,6 @@ import ParentHome from "./components/views/ParentHome";
 import ChildHome from "./components/views/ChildHome";
 import MedHome from "./components/views/MedHome.js";
 import "./App.css";
-import MedHome from "./components/views/MedHome";
 
 function App() {
   return (

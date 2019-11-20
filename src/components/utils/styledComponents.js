@@ -72,3 +72,6 @@ export const ButtonAddChild = styled(Button)`
   margin-right: 40%;
 `;
 
+/* For ChildHome.js */
+
+
