@@ -12,7 +12,9 @@ import PatientProtectedRoute from "./components/navigation/routes/PatientProtect
 import Nav from "./components/navigation/Nav";
 import ParentHome from "./components/views/ParentHome";
 import ChildHome from "./components/views/ChildHome";
+import MedHome from "./components/views/MedHome.js";
 import "./App.css";
+import MedHome from "./components/views/MedHome";
 
 function App() {
   return (
@@ -33,7 +35,7 @@ function App() {
         render={props => <MedRegistrationForm {...props} />}
       />
       {/* // * Place Med landing page in this component */}
-      {/* <MedProtectedRoute exact path="/med-account" component={} />
+      <MedProtectedRoute exact path="/med-account" component={MedHome} />
 
       {/* Patient routes */}
       <Route

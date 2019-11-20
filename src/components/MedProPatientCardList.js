@@ -10,7 +10,7 @@ const MedProPatientCardList = () => {
     api()
       .get("/user/patient/1")
       .then(res => {
-        setPatientData(res.data.seeds); //003-patients.js <- Unsure of what goes here so that the right data is grabbed
+        setPatientData(res.data);
 
         console.log("Grabbed:", res.data);
       })
@@ -20,9 +20,9 @@ const MedProPatientCardList = () => {
   }, []);
   return (
     <div>
-      {patientData.map(cv => {
+      {/* {patientData.map(cv => {
         <MedProPatientCard data={cv} key={cv.id} />;
-      })}
+      })} */}
     </div>
   );
 };
