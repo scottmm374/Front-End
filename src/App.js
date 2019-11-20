@@ -13,8 +13,8 @@ import Nav from "./components/navigation/Nav";
 import ParentHome from "./components/views/ParentHome";
 import ChildHome from "./components/views/ChildHome";
 import MedHome from "./components/views/MedHome.js";
+import SinglePatient from "./components/views/SinglePatient.js";
 import "./App.css";
-import MedHome from "./components/views/MedHome";
 
 function App() {
   return (
@@ -36,6 +36,13 @@ function App() {
       />
       {/* // * Place Med landing page in this component */}
       <MedProtectedRoute exact path="/med-account" component={MedHome} />
+
+
+      <MedProtectedRoute
+        exact
+        path="/med-account/:id"
+        component={SinglePatient}
+      />
 
       {/* Patient routes */}
       <Route
