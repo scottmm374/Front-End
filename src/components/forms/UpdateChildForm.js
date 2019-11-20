@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import history from "../../history";
 import api from "../utils/api";
 import {
   ButtonAddChild,
@@ -46,6 +47,7 @@ const UpdateChildForm = props => {
     api()
       .put("/user/patient/49", editChild)
       .then(res => {
+        history.push(`/patient-home/${res.data.id}`);
         console.log("editChild", res.data);
       })
       .catch(err => {
