@@ -11,7 +11,20 @@ import {
 } from "../utils/styledComponents.js";
 
 const AddChild = ({ touched, errors }) => {
-  // console.log(values);
+  const [child, setChild] = useState({
+    firstName: "",
+    lastName: "",
+    age: "",
+    gender:"",
+    weight: "",
+    height: "",
+    patientEmail: "", 
+    isChild: true,
+    userId: ""
+  })
+
+
+
 
   return (
     <LightCardAddChild>
@@ -141,7 +154,7 @@ const FormikAddChildForm = withFormik({
   handleSubmit(values) {
     console.log(values);
     api()
-      .post("/user/addpatient", values)
+      .put((`/user/${props.match.params.id`}), values)
       .then(res => {
         console.log(res);
       })
