@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import api from "./utils/api.js";
+import getMedToken from "./utils/medApi";
 import MedProPatientCard from "./MedProPatientCard.js";
 
 const MedProPatientCardList = () => {
   const [patientData, setPatientData] = useState();
 
   useEffect(() => {
-    api()
-      .get("/user/patient/1")
+    getMedToken()
+      .get("perm/2")
       .then(res => {
         setPatientData(res.data);
 
@@ -18,8 +18,15 @@ const MedProPatientCardList = () => {
         console.log("errored:", err);
       });
   }, []);
+  console.log("useState Data:", patientData);
   return (
     <div>
+      {patientData
+        ? patientData.map(cv => {
+            return <MedProPatientCard data={cv} key={cv.patientId} />;
+          })
+        : ""}
+
       {/* {patientData.map(cv => {
         <MedProPatientCard data={cv} key={cv.id} />;
       })} */}

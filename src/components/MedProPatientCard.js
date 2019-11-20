@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { LightCard } from "./utils/styledComponents.js";
+import { Link } from "react-router-dom";
 
 //Styles
 
@@ -18,20 +19,12 @@ const P = styled.p`
   margin: 5px 0px;
 `;
 
-const Link = styled.button`
-  background: none;
-  color: #32ddaa;
-  font-size: 18px;
-  font-weight: bold;
-  margin: 5px 0px;
-`;
-
 const MedProPatientCard = props => {
   return (
     <LightCard>
-      <H2>{`${props.firstName} ${props.lastName}`}</H2>
-      <P>{`${props.gender} | ${props.age}`}</P>
-      <Link>View Patient</Link>
+      <H2>{`${props.data.firstName} ${props.data.lastName}`}</H2>
+      <P>{`${props.data.gender} | ${props.data.age}`}</P>
+      {/* <Link to={`/med-account/${props.data.patientId}`}>View Details</Link>  */}
     </LightCard>
   );
 };
