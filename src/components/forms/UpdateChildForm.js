@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import history from "../../history";
 import api from "../utils/api";
 import {
-  ButtonAddChild,
-  LightCardAddChild,
-  label,
-  // formContainerAddChild,
-  FlexWarpAddChild
+  Button,
+  LightCard,
+  BetterField,
+  NewLable,
+  FormContainer,
+  FlexWarp
 } from "../utils/styledComponents.js";
 
 const UpdateChildForm = props => {
@@ -62,80 +63,84 @@ const UpdateChildForm = props => {
   console.log("editChild", editChild);
 
   return (
-    <div>
+    <LightCard>
       <form onSubmit={handleUpdate}>
-        <label>Patient Email</label>
-        <input
-          type="text"
-          name="patientEmail"
-          placeholder="Parent Email"
-          disabled
-          value={editChild.patientEmail}
-          onChange={handleChange}
-        />
+        <FlexWarp>
+          <FormContainer>
+            <NewLable>Parent Email</NewLable>
+            <input
+              type="text"
+              name="patientEmail"
+              placeholder="Parent Email"
+              disabled
+              value={editChild.patientEmail}
+              onChange={handleChange}
+            />
 
-        <label>Patient ID</label>
-        <input
-          type="text"
-          name="userId"
-          disabled
-          placeholder="Patient ID"
-          value={editChild.userId}
-          onChange={handleChange}
-        />
-        <label>First Name</label>
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={editChild.firstName}
-          onChange={handleChange}
-        />
-        <label>Last Name</label>
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={editChild.lastName}
-          onChange={handleChange}
-        />
-        <label>Age</label>
-        <input
-          type="text"
-          name="age"
-          placeholder="Age (years)"
-          value={editChild.age}
-          onChange={handleChange}
-        />
+            <NewLable>Patient ID</NewLable>
+            <input
+              type="text"
+              name="userId"
+              disabled
+              placeholder="Patient ID"
+              value={editChild.userId}
+              onChange={handleChange}
+            />
+            <NewLable>First Name</NewLable>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={editChild.firstName}
+              onChange={handleChange}
+            />
+            <NewLable>Last Name</NewLable>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={editChild.lastName}
+              onChange={handleChange}
+            />
+            <NewLable>Age</NewLable>
+            <input
+              type="text"
+              name="age"
+              placeholder="Age (years)"
+              value={editChild.age}
+              onChange={handleChange}
+            />
 
-        <label>Gender</label>
-        <input
-          type="text"
-          name="gender"
-          placeholder="Gender"
-          value={editChild.gender}
-          onChange={handleChange}
-        />
+            <NewLable>Gender</NewLable>
+            <input
+              type="text"
+              name="gender"
+              placeholder="Gender"
+              value={editChild.gender}
+              onChange={handleChange}
+            />
 
-        <label>Weight</label>
-        <input
-          type="text"
-          name="weight"
-          placeholder="Weight (Lbs)"
-          value={editChild.weight}
-          onChange={handleChange}
-        />
-        <label>Height</label>
-        <input
-          type="text"
-          name="height"
-          placeholder="Height (inches)"
-          value={editChild.height}
-          onChange={handleChange}
-        />
-        <button type="submit">Save Edit</button>
+            <NewLable>Weight</NewLable>
+            <input
+              type="text"
+              name="weight"
+              placeholder="Weight (Lbs)"
+              value={editChild.weight}
+              onChange={handleChange}
+            />
+            <NewLable>Height</NewLable>
+            <input
+              type="text"
+              name="height"
+              placeholder="Height (inches)"
+              value={editChild.height}
+              onChange={handleChange}
+            />
+            <Button type="submit">Save Changes</Button>
+          </FormContainer>
+        </FlexWarp>
       </form>
-    </div>
+    </LightCard>
   );
 };
 

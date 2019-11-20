@@ -4,6 +4,13 @@ import history from "../../history";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import api from "../utils/api";
+import {
+  Button,
+  LightCard,
+  NewLable,
+  FormContainer,
+  FlexWarp
+} from "../utils/styledComponents.js";
 
 function PatientLoginForm({ errors, touched, status }) {
   const [patientLogin, setPatientLogin] = useState([]);
@@ -16,20 +23,24 @@ function PatientLoginForm({ errors, touched, status }) {
   }, [status]);
 
   return (
-    <Form>
-      <div>
-        {touched.userEmail && errors.userEmail && <p>{errors.userEmail}</p>}
-        <Field type="text" name="userEmail" placeholder="userEmail" />
-      </div>
-      <div>
-        {touched.userPassword && errors.userPassword && (
-          <p>{errors.userPassword}</p>
-        )}
-        <Field type="text" name="userPassword" placeholder="userPassword" />
-      </div>
-      <button type="submit">Login</button>
-      <h3>New Patient?</h3> <Link to="patient-register">Register</Link>
-    </Form>
+    <LightCard>
+      <Form>
+        <FlexWarp>
+          <FormContainer>
+            <NewLable>Email</NewLable>
+            {touched.userEmail && errors.userEmail && <p>{errors.userEmail}</p>}
+            <Field type="text" name="userEmail" placeholder="Email" />
+            <NewLable>Password</NewLable>
+            {touched.userPassword && errors.userPassword && (
+              <p>{errors.userPassword}</p>
+            )}
+            <Field type="text" name="userPassword" placeholder="Password" />
+            <Button type="submit">Login</Button>
+            <h3>New Patient?</h3> <Link to="patient-register">Register</Link>
+          </FormContainer>
+        </FlexWarp>
+      </Form>
+    </LightCard>
   );
 }
 

@@ -2,6 +2,14 @@ import React, { useState, useEffect } from "react";
 // import { getParentId } from "../utils/api";
 // import history from "../../history";
 import api from "../utils/api";
+import {
+  Button,
+  LightCard,
+  BetterField,
+  NewLable,
+  FormContainer,
+  FlexWarp
+} from "../utils/styledComponents.js";
 
 const PermissionForm = props => {
   // const [updatePermission, setUpdatePermission] = useState({
@@ -40,25 +48,29 @@ const PermissionForm = props => {
   // console.log("patient", updatePermission);
 
   return (
-    <div>
+    <LightCard>
       <h1>Permission</h1>
       <form onSubmit={handlePermission}>
-        <input
-          type="text"
-          name="medproId"
-          placeholder="Med Id"
-          value={permission.medproId}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="patientId"
-          placeholder="Child id"
-          value={permission.id}
-          onChange={handleChange}
-        />
-        {/* <label>
-          
+        <FlexWarp>
+          <FormContainer>
+            <NewLable>Medpro Id</NewLable>
+            <input
+              type="text"
+              name="medproId"
+              placeholder="MedPro Id"
+              value={permission.medproId}
+              onChange={handleChange}
+            />
+            <NewLable>Child Id</NewLable>
+            <input
+              type="text"
+              name="patientId"
+              placeholder="Child id"
+              value={permission.id}
+              onChange={handleChange}
+            />
+            {/* <label>
+           <NewLable htmlFor="vaccineDate"> Date Administered</NewLable>
           <input
             type="radio"
             name="permission"
@@ -68,9 +80,11 @@ const PermissionForm = props => {
           />
         </label> */}
 
-        <button>Give Permission</button>
+            <Button>Give Permission</Button>
+          </FormContainer>
+        </FlexWarp>
       </form>
-    </div>
+    </LightCard>
   );
 };
 

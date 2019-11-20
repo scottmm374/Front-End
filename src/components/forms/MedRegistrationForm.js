@@ -3,6 +3,14 @@ import { withFormik, Form, Field } from "formik";
 import history from "../../history";
 import * as yup from "yup";
 import medApi from "../utils/medApi";
+import {
+  Button,
+  LightCard,
+  BetterField,
+  NewLable,
+  FormContainer,
+  FlexWarp
+} from "../utils/styledComponents.js";
 
 function MedRegistrationForm({ errors, touched, status }) {
   const [medReg, setMedReg] = useState([]);
@@ -15,40 +23,51 @@ function MedRegistrationForm({ errors, touched, status }) {
   }, [status]);
 
   return (
-    <Form>
-      <div>
-        {touched.medicFirstName && errors.medicFirstName && (
-          <p>{errors.medicFirstName}</p>
-        )}
-        <Field type="text" name="medicFirstName" placeholder="First Name" />
-      </div>
-      <div>
-        {touched.medicLastName && errors.medicLastName && (
-          <p>{errors.medicLastName}</p>
-        )}
-        <Field type="text" name="medicLastName" placeholder="Last Name" />
-      </div>
-      <div>
-        {touched.medicEmail && errors.medicEmail && <p>{errors.medicEmail}</p>}
-        <Field type="text" name="medicEmail" placeholder="Email" />
-      </div>
-      <div>
-        {touched.medicPassword && errors.medicPassword && (
-          <p>{errors.medicPassword}</p>
-        )}
-        <Field type="text" name="medicPassword" placeholder="medicPassword" />
-      </div>
-      <div>
-        {touched.company && errors.company && <p>{errors.company}</p>}
-        <Field type="text" name="company" placeholder="company" />
-      </div>
-      <div>
-        {touched.position && errors.position && <p>{errors.position}</p>}
-        <Field type="text" name="position" placeholder="position" />
-      </div>
+    <LightCard>
+      <Form>
+        <FlexWarp>
+          <FormContainer>
+            <NewLable> First Name</NewLable>
+            {touched.medicFirstName && errors.medicFirstName && (
+              <p>{errors.medicFirstName}</p>
+            )}
+            <Field type="text" name="medicFirstName" placeholder="First Name" />
 
-      <button type="submit">Submit</button>
-    </Form>
+            <NewLable> Last Name</NewLable>
+            {touched.medicLastName && errors.medicLastName && (
+              <p>{errors.medicLastName}</p>
+            )}
+            <Field type="text" name="medicLastName" placeholder="Last Name" />
+
+            <NewLable> Email</NewLable>
+            {touched.medicEmail && errors.medicEmail && (
+              <p>{errors.medicEmail}</p>
+            )}
+            <Field type="text" name="medicEmail" placeholder="Email" />
+
+            <NewLable>Password</NewLable>
+            {touched.medicPassword && errors.medicPassword && (
+              <p>{errors.medicPassword}</p>
+            )}
+            <Field
+              type="text"
+              name="medicPassword"
+              placeholder="medicPassword"
+            />
+            <NewLable> Company</NewLable>
+
+            {touched.company && errors.company && <p>{errors.company}</p>}
+            <Field type="text" name="company" placeholder="company" />
+
+            <NewLable>Postion</NewLable>
+            {touched.position && errors.position && <p>{errors.position}</p>}
+            <Field type="text" name="position" placeholder="position" />
+
+            <Button type="submit">Submit</Button>
+          </FormContainer>
+        </FlexWarp>
+      </Form>
+    </LightCard>
   );
 }
 
