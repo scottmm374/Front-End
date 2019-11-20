@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 
 export const Master = styled.div`
@@ -20,6 +19,11 @@ export const FlexWarp = styled.div`
 export const Button = styled.button`
   background: #32ddaa;
   color: #ffffff;
+  &:hover {
+    background: #ffffff;
+    border: 1px solid #32ddaa;
+    color: #32ddaa;
+  }
   border-radius: 4px;
   border: none;
   margin: auto 15px;
@@ -73,5 +77,3 @@ export const ButtonAddChild = styled(Button)`
 `;
 
 /* For ChildHome.js */
-
-

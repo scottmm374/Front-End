@@ -13,7 +13,7 @@ const Nav = () => {
         {/* <NavLink to="med-register">Med Register</NavLink> */}
         {/* Conditionally show links on nav if logged in or not */}
         {/* {!MedSignedIn && <NavLink to="med-login">Med Sign In</NavLink>} */}
-        {/* {MedSignedIn && <NavLink to="med-account">Med Account</NavLink>} */}
+        {MedSignedIn && <NavLink to="med-account">Med Account</NavLink>}
         {MedSignedIn && <NavLink to="med-logout">Med Logout</NavLink>}
 
         {/* Patient for testing, remove sign in and register once done */}
@@ -23,9 +23,9 @@ const Nav = () => {
         {/* {!PatientSignedIn && (
           <NavLink to="patient-login">Patient Sign In</NavLink>
         )} */}
-        {/* {PatientSignedIn && (
+        {PatientSignedIn && (
           <NavLink to="patient-account">Patient Account</NavLink>
-        )} */}
+        )}
         {PatientSignedIn && (
           <NavLink to="patient-logout">Patient Logout</NavLink>
         )}
