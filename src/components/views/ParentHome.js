@@ -3,14 +3,14 @@ import AddChild from "../forms/AddChild";
 import ChildCardList from "../ChildCardList";
 import getToken from "../utils/api";
 
-const ParentHome = () => {
+const ParentHome = (props) => {
     const [userName, setUserName] = useState("");
     const [children, setChildren] = useState(null);
     const [shots, setShots] = useState([]);
-
+    console.log(props);
     useEffect(() => {
         getToken()
-            .get(`https://immunizationtracker-bw.herokuapp.com/api/user/1`)
+            .get(`https://immunizationtracker-bw.herokuapp.com/api/user/${props.match.params.id}`)
             .then(res => {
                 console.log("it worked:", res.data);
                 setChildren(res.data);
@@ -25,6 +25,9 @@ const ParentHome = () => {
         {
             //set userName by finding first entry that's not a child. If it's not index 0, issue warning message
             let parent = children[0];
+            if(!parent)
+                return;
+
             if(!parent.isChild)
                 setUserName(`${parent.firstName} ${parent.lastName}`);
             else

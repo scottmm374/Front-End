@@ -62,7 +62,7 @@ export default withFormik({
         localStorage.setItem("token", res.data.token);
         // localStorage.setItem("parentId", res.data.id);
         setStatus(res.data);
-        history.push("/patient-account");
+        history.push(`/patient-home/${res.data.id}`);
         console.log("Login patient", res.data);
       })
       .catch(err => {
