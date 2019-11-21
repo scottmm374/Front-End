@@ -1,167 +1,146 @@
-import React from "react";
-import { withFormik, Form, Field } from "formik";
-import * as Yup from "yup";
+import React, { useState, useEffect } from "react";
+import history from "../../history";
 import api from "../utils/api";
 import {
-  ButtonAddChild,
-  LightCardAddChild,
+  Button,
+  LightCard,
+  BetterField,
   NewLable,
-  FormContainerAddChild,
-  FlexWarpAddChild
+  FormContainer,
+  FlexWarp
 } from "../utils/styledComponents.js";
 
-const AddChild = ({ touched, errors }) => {
-  const [child, setChild] = useState({
+const UpdateChildForm = props => {
+  const [editChild, setEditChild] = useState({
     firstName: "",
     lastName: "",
     age: "",
-    gender:"",
+    gender: "",
     weight: "",
     height: "",
-    patientEmail: "", 
+    patientEmail: "",
     isChild: true,
     userId: ""
-  })
+  });
 
+  console.log("history", props);
 
+  useEffect(() => {
+    api()
+      .get("/user/patient/49")
+      .then(res => {
+        setEditChild(res.data);
+        console.log("get child", res.data);
+      })
+      .catch(err => {
+        console.log("get kid", err);
+      });
+  }, []);
 
+  // const patientEmail = localStorage.getItem("userEmail");
+  // const userId = localStorage.getItem("id");
+  // const userEmail = localStorage.getItem("userEmail")
+
+  const handleUpdate = e => {
+    e.preventDefault();
+    api()
+      // .put((`/user/patient/${props.match.params.id}`), editChild)
+      .put("/user/patient/49", editChild)
+      .then(res => {
+        history.push(`/patient-home/${res.data.id}`);
+        console.log("editChild", res.data);
+      })
+      .catch(err => {
+        console.log("edit child", err);
+      });
+  };
+
+  const handleChange = e => {
+    setEditChild({ ...editChild, [e.target.name]: e.target.value });
+  };
+
+  console.log("editChild", editChild);
 
   return (
-    <LightCardAddChild>
-      <Form>
-        <FlexWarpAddChild>
-          <FormContainerAddChild>
-            <NewLable htmlFor="patientEmail">Patient Email</NewLable>
-            <Field
-              type="email"
+    <LightCard>
+      <form onSubmit={handleUpdate}>
+        <FlexWarp>
+          <FormContainer>
+            <NewLable>Parent Email</NewLable>
+            <input
+              type="text"
               name="patientEmail"
-              placeholder="Patient Email"
+              placeholder="Parent Email"
+              disabled
+              value={editChild.patientEmail}
+              onChange={handleChange}
             />
-            {touched.patientEmail && errors.patientEmail && (
-              <p>{errors.patientEmail}</p>
-            )}
-          </FormContainerAddChild>
 
-          <FormContainerAddChild>
-            <NewLable htmlFor="firstName">Patient ID</NewLable>
-            <Field type="text" name="userId" placeholder="Patient ID" />
-            {touched.userId && errors.userId && <p>{errors.userId}</p>}
-          </FormContainerAddChild>
+            <NewLable>Patient ID</NewLable>
+            <input
+              type="text"
+              name="userId"
+              disabled
+              placeholder="Patient ID"
+              value={editChild.userId}
+              onChange={handleChange}
+            />
+            <NewLable>First Name</NewLable>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={editChild.firstName}
+              onChange={handleChange}
+            />
+            <NewLable>Last Name</NewLable>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={editChild.lastName}
+              onChange={handleChange}
+            />
+            <NewLable>Age</NewLable>
+            <input
+              type="text"
+              name="age"
+              placeholder="Age (years)"
+              value={editChild.age}
+              onChange={handleChange}
+            />
 
-          <FormContainerAddChild>
-            <NewLable htmlFor="firstName">First Name</NewLable>
-            <Field type="text" name="firstName" placeholder="First Name" />
-            {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
-          </FormContainerAddChild>
+            <NewLable>Gender</NewLable>
+            <input
+              type="text"
+              name="gender"
+              placeholder="Gender"
+              value={editChild.gender}
+              onChange={handleChange}
+            />
 
-          <FormContainerAddChild>
-            <NewLable htmlFor="lastName">Last Name</NewLable>
-            <Field type="text" name="lastName" placeholder="Last Name" />
-            {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
-          </FormContainerAddChild>
-
-          <FormContainerAddChild>
-            <NewLable htmlFor="age">Age</NewLable>
-            <Field component="select" name="age" placeholder="Age (years)">
-              <option>Age (years)</option>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-            </Field>
-            {touched.age && errors.age && <p>{errors.age}</p>}
-          </FormContainerAddChild>
-
-          <FormContainerAddChild>
-            <NewLable htmlFor="gender">Gender</NewLable>
-            <Field component="select" name="gender" placeholder="Gender">
-              <option>Age (years)</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </Field>
-            {touched.gender && errors.gender && <p>{errors.gender}</p>}
-          </FormContainerAddChild>
-
-          <FormContainerAddChild>
-            <NewLable htmlFor="weight">Weight</NewLable>
-            <Field type="text" name="weight" placeholder="Weight (Lbs)" />
-            {touched.weight && errors.weight && <p>{errors.weight}</p>}
-          </FormContainerAddChild>
-          <FormContainerAddChild>
-            <NewLable htmlFor="height">Height</NewLable>
-            <Field type="text" name="height" placeholder="Height (inches)" />
-            {touched.height && errors.height && <p>{errors.height}</p>}
-          </FormContainerAddChild>
-          <ButtonAddChild type="submit">Add</ButtonAddChild>
-        </FlexWarpAddChild>
-      </Form>
-    </LightCardAddChild>
+            <NewLable>Weight</NewLable>
+            <input
+              type="text"
+              name="weight"
+              placeholder="Weight (Lbs)"
+              value={editChild.weight}
+              onChange={handleChange}
+            />
+            <NewLable>Height</NewLable>
+            <input
+              type="text"
+              name="height"
+              placeholder="Height (inches)"
+              value={editChild.height}
+              onChange={handleChange}
+            />
+            <Button type="submit">Save Changes</Button>
+          </FormContainer>
+        </FlexWarp>
+      </form>
+    </LightCard>
   );
 };
 
-const FormikAddChildForm = withFormik({
-  mapPropsToValues({
-    firstName,
-    lastName,
-    age,
-    gender,
-    weight,
-    height,
-    patientEmail,
-    /*patientPhone,*/ isChild,
-    userId
-  }) {
-    return {
-      firstName: firstName || "",
-      lastName: lastName || "",
-      age: age || "",
-      gender: gender || "",
-      weight: weight || "",
-      height: height || "",
-      patientEmail: patientEmail || "",
-      //patientPhone: patientPhone || "",
-      isChild: isChild || true,
-      userId: userId || ""
-    };
-  },
-
-  validationSchema: Yup.object().shape({
-    firstName: Yup.string().required("Enter first name."),
-    lastName: Yup.string().required("Enter last name."),
-    age: Yup.string().required("Select an age."),
-    gender: Yup.string().required("Select a gender."),
-    weight: Yup.string().required("Enter a weight in pounds."),
-    height: Yup.string().required("Enter a height in inches."),
-    patientEmail: Yup.string().required("Please enter Parents Email"),
-    /*patientPhone: Yup.string(),*/
-    isChild: Yup.boolean()
-  }),
-
-  handleSubmit(values) {
-    console.log(values);
-    api()
-      .put((`/user/${props.match.params.id`}), values)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-})(AddChild);
-
-export default FormikAddChildForm;
+export default UpdateChildForm;

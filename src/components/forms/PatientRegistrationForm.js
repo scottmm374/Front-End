@@ -3,6 +3,14 @@ import { withFormik, Form, Field } from "formik";
 import history from "../../history";
 import * as yup from "yup";
 import api from "../utils/api";
+import {
+  Button,
+  LightCard,
+  BetterField,
+  NewLable,
+  FormContainer,
+  FlexWarp
+} from "../utils/styledComponents.js";
 
 function PatientRegistrationForm({ errors, touched, status, history }) {
   const [patientReg, setPatientReg] = useState([]);
@@ -17,23 +25,29 @@ function PatientRegistrationForm({ errors, touched, status, history }) {
   // console.log("patientReg", patientReg);
 
   return (
-    <Form>
-      <div>
-        {touched.userName && errors.userName && <p>{errors.title}</p>}
-        <Field type="text" name="userName" placeholder="userName" />
-      </div>
-      <div>
-        {touched.userEmail && errors.userEmail && <p>{errors.userEmail}</p>}
-        <Field type="text" name="userEmail" placeholder="userEmail" />
-      </div>
-      <div>
-        {touched.userPassword && errors.userPassword && (
-          <p>{errors.userPassword}</p>
-        )}
-        <Field type="text" name="userPassword" placeholder="userPassword" />
-      </div>
-      <button type="submit">Submit</button>
-    </Form>
+    <LightCard>
+      <Form>
+        <FlexWarp>
+          <FormContainer>
+            <NewLable> Full Name</NewLable>
+            {touched.userName && errors.userName && <p>{errors.title}</p>}
+            <Field type="text" name="userName" placeholder="Full Name" />
+
+            <NewLable>Email</NewLable>
+            {touched.userEmail && errors.userEmail && <p>{errors.userEmail}</p>}
+            <Field type="text" name="userEmail" placeholder="Email" />
+
+            <NewLable>Password</NewLable>
+            {touched.userPassword && errors.userPassword && (
+              <p>{errors.userPassword}</p>
+            )}
+            <Field type="text" name="userPassword" placeholder="Password" />
+
+            <Button type="submit">Submit</Button>
+          </FormContainer>
+        </FlexWarp>
+      </Form>
+    </LightCard>
   );
 }
 
