@@ -9,13 +9,16 @@ import {
 // import UpdateChildForm from "../forms/UpdateChildForm.js";
 import UpdateChildToggle from "../views/UpdateChildToggle";
 import PermissionForm from "../forms/PermissionForm";
+
 import HistoryCard from '../HistoryCard';
+
 
 const ChildHome = (props) => {
     console.log(props.location.state);
     const child = props.location.state.child;
     const shots = props.location.state.shots;
     console.log(child);
+
 
     return (
         <>
@@ -40,6 +43,7 @@ const ChildHome = (props) => {
             <PermissionForm />
         </>
     );
+
 };
 
 export default ChildHome;
