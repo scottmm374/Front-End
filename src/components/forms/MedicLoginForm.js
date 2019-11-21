@@ -82,10 +82,9 @@ export default withFormik({
       .post("/auth/med-login", values)
       .then(res => {
         localStorage.setItem("medtoken", res.data.medtoken);
+        localStorage.setItem("id", res.data.id);
         setStatus(res.data);
-        //* This worked like this and redirected?
-        // *values.history.push("/med-account");
-        //! This also works fine? But not for patient login-in
+
         history.push("/med-account");
         console.log("Login med", res.data);
       })
