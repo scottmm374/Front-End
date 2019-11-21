@@ -32,6 +32,7 @@ const PermissionForm = props => {
     api()
       .post("perm/add", permission)
       .then(res => {
+        window.location.reload();
         console.log("perm", res.data);
       })
       .catch(err => {
@@ -49,12 +50,13 @@ const PermissionForm = props => {
 
   return (
     <LightCard>
-      <h1>Permission</h1>
+      <h1> Grant Medical Permission</h1>
       <form onSubmit={handlePermission}>
         <FlexWarp>
           <FormContainer>
             <NewLable>Medpro Id</NewLable>
             <input
+              id="imForm"
               type="text"
               name="medproId"
               placeholder="MedPro Id"
@@ -63,6 +65,7 @@ const PermissionForm = props => {
             />
             <NewLable>Child Id</NewLable>
             <input
+              id="imForm"
               type="text"
               name="patientId"
               placeholder="Child id"

@@ -31,17 +31,32 @@ function PatientRegistrationForm({ errors, touched, status, history }) {
           <FormContainer>
             <NewLable> Full Name</NewLable>
             {touched.userName && errors.userName && <p>{errors.title}</p>}
-            <Field type="text" name="userName" placeholder="Full Name" />
+            <Field
+              id="imForm"
+              type="text"
+              name="userName"
+              placeholder="Full Name"
+            />
 
             <NewLable>Email</NewLable>
             {touched.userEmail && errors.userEmail && <p>{errors.userEmail}</p>}
-            <Field type="text" name="userEmail" placeholder="Email" />
+            <Field
+              id="imForm"
+              type="text"
+              name="userEmail"
+              placeholder="Email"
+            />
 
             <NewLable>Password</NewLable>
             {touched.userPassword && errors.userPassword && (
               <p>{errors.userPassword}</p>
             )}
-            <Field type="text" name="userPassword" placeholder="Password" />
+            <Field
+              id="imForm"
+              type="text"
+              name="userPassword"
+              placeholder="Password"
+            />
 
             <Button type="submit">Submit</Button>
           </FormContainer>
