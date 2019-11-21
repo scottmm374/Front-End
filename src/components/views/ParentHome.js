@@ -63,7 +63,7 @@ const ParentHome = (props) => {
                     <AddChild 
                             setRefresh={setRefresh} 
                             patientEmail={localStorage.patientEmail ? localStorage.patientEmail : "err@err.com"} 
-                            userId={props.match.params.id}
+                            userId={localStorage.id}
                     />
                 </LightCard>
             </div>
