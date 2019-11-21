@@ -29,12 +29,22 @@ function PatientLoginForm({ errors, touched, status }) {
           <FormContainer>
             <NewLable>Email</NewLable>
             {touched.userEmail && errors.userEmail && <p>{errors.userEmail}</p>}
-            <Field type="text" name="userEmail" placeholder="Email" />
+            <Field
+              id="imForm"
+              type="text"
+              name="userEmail"
+              placeholder="Email"
+            />
             <NewLable>Password</NewLable>
             {touched.userPassword && errors.userPassword && (
               <p>{errors.userPassword}</p>
             )}
-            <Field type="text" name="userPassword" placeholder="Password" />
+            <Field
+              id="imForm"
+              type="text"
+              name="userPassword"
+              placeholder="Password"
+            />
             <Button type="submit">Login</Button>
             <h3>New Patient?</h3> <Link to="patient-register">Register</Link>
           </FormContainer>
