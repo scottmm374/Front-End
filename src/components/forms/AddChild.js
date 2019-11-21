@@ -12,35 +12,12 @@ import {
   FlexWarpAddChild
 } from "../utils/styledComponents.js";
 
-const AddChild = ({ touched, errors }) => {
-  // console.log(values);
-
+const AddChild = ({ touched, errors, setRefresh, patientEmail, userId }) => {
+  console.log(patientEmail, userId);
   return (
     <LightCardAddChild>
       <Form>
         <FlexWarpAddChild>
-          <FormContainerAddChild>
-            <NewLable htmlFor="patientEmail">Patient Email</NewLable>
-            <Field
-                type="email"
-                name="patientEmail"
-                placeholder="Patient Email"
-              />
-              {touched.patientEmail && errors.patientEmail && (
-                <p>{errors.patientEmail}</p>
-              )}
-          </FormContainerAddChild>
-
-          <FormContainerAddChild>
-            <NewLable htmlFor="firstName">Patient ID</NewLable>
-            <Field
-                type="text"
-                name="userId"
-                placeholder="Patient ID"
-            />
-            {touched.userId && errors.userId && <p>{errors.userId}</p>}
-          </FormContainerAddChild>
-
           <FormContainerAddChild>
             <NewLable htmlFor="firstName">First Name</NewLable>
             <Field
@@ -158,12 +135,14 @@ const FormikAddChildForm = withFormik({
     isChild: Yup.boolean()
   }),
 
-  handleSubmit(values) {
+  handleSubmit(values, { props, setSubmitting, resetForm }) {
     console.log(values);
     api()
       .post("/user/addpatient", values)
       .then(res => {
         console.log(res);
+        resetForm();
+        props.setRefresh(true);
       })
       .catch(err => {
         console.log(err);

@@ -4,45 +4,30 @@ import ChildCardList from "../ChildCardList";
 import getToken from "../utils/api";
 
 const ParentHome = (props) => {
-    const [userName, setUserName] = useState("");
     const [children, setChildren] = useState(null);
     const [shots, setShots] = useState([]);
-    console.log(props);
+    const [refresh, setRefresh] = useState(false);
+
     useEffect(() => {
+        if(refresh)
+        {
+            setShots([]);
+            setRefresh(false);
+        }
         getToken()
             .get(`https://immunizationtracker-bw.herokuapp.com/api/user/${props.match.params.id}`)
             .then(res => {
-                console.log("it worked:", res.data);
+                //console.log("it worked:", res.data);
                 setChildren(res.data);
             })
             .catch(err => {
                 console.log("error:", err);
             });
-    }, []);
+    }, [props.match.params.id, refresh]);
 
     useEffect(() => {
         if(children)
         {
-            //set userName by finding first entry that's not a child. If it's not index 0, issue warning message
-            let parent = children[0];
-            if(!parent)
-                return;
-
-            if(!parent.isChild)
-                setUserName(`${parent.firstName} ${parent.lastName}`);
-            else
-            {
-                parent = children.find((child) => !child.isChild );
-
-                if(parent)
-                {
-                    setUserName(`${parent.firstName} ${parent.lastName}`);
-                    console.log("Error: Parent is not first in user array");
-                }
-                else
-                    console.log("Error: No parent found!!");
-            }
-
             children.map((child) => {
                 getToken()
                     .get(`https://immunizationtracker-bw.herokuapp.com/api/record/${child.id}`)
@@ -58,18 +43,23 @@ const ParentHome = (props) => {
         }
     }, [children]);
 
+    //useEffect(()=>{console.log(refresh)}, [refresh]);
+
     if(!children || shots.length < children.length) return <h4>Loading...</h4>
     
     return (
         <>
-            <h1>Welcome {userName}</h1>
+            <h1>Welcome to Your Homepage!</h1>
             <div>
                 <h2>Your Children</h2>
-                <ChildCardList children={children} shots={shots}/>
+                {children.length > 0 ? <ChildCardList children={children} shots={shots}/> : <div>No Children</div>}
             </div>
             <div>
                 <h2>Add Child</h2>
-                <AddChild />
+                <AddChild 
+                        setRefresh={setRefresh} 
+                        patientEmail={localStorage.patientEmail ? localStorage.patientEmail : "err@err.com"} 
+                        userId={props.match.params.id}/>
             </div>
         </>
     );
