@@ -53,7 +53,7 @@ function App() {
           component={PatientLogout}
         />
         <PatientProtectedRoute
-          path="/patient-home/:id"
+          path="/patient-home/"
           component={ParentHome}
         />
         <Route
