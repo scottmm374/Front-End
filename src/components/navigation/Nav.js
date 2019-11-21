@@ -35,14 +35,16 @@ const Navigation = () => {
 
         <Nav className="mr-auto" navbar>
           <NavItem>
-            {MedSignedIn && <NavLink href="/med-account">Med Account</NavLink>}
+            {MedSignedIn && (
+              <NavLink href="/med-account/:id">Med Account</NavLink>
+            )}
           </NavItem>
           <NavItem>
             {MedSignedIn && <NavLink href="/med-logout">Med Logout</NavLink>}
           </NavItem>
           <NavItem>
             {PatientSignedIn && (
-              <NavLink href="/patient-home">Patient Account</NavLink>
+              <NavLink href="/patient-home/:id">Patient Account</NavLink>
             )}
           </NavItem>
           <NavItem>

@@ -20,8 +20,8 @@ const PermissionForm = props => {
 
   const [permission, setPermission] = useState({
     permission: true,
-    patientId: null,
-    medproId: null
+    patientId: "",
+    medproId: ""
   });
 
   // const id = props.params.match.id;
