@@ -33,6 +33,10 @@ export const Button = styled.button`
   max-height: 50px;
 `;
 
+export const IMContainer = styled.div`
+  display: flex;
+`;
+
 // Doesn't currently Work
 // export const BetterField = styled.Field`
 //   border: solid 1px #bdbdbd;
@@ -74,6 +78,10 @@ export const FormContainerAddChild = styled(FormContainer)`
 export const ButtonAddChild = styled(Button)`
   margin-left: 40%;
   margin-right: 40%;
+`;
+
+export const Highlight = styled.span`
+  color: #32ddaa;
 `;
 
 /* For ChildHome.js */
