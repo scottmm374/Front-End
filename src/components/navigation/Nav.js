@@ -9,6 +9,7 @@ import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 const Navigation = () => {
   const MedSignedIn = getMedToken();
   const PatientSignedIn = getToken();
+
   return (
     <div>
       <Navbar color="light" light expand="md">
@@ -18,19 +19,19 @@ const Navigation = () => {
 
         <Nav className="mr-auto" navbar>
           <NavItem>
-            {MedSignedIn && <NavLink href="med-account">Med Account</NavLink>}
+            {MedSignedIn && <NavLink href="/med-account">Med Account</NavLink>}
           </NavItem>
           <NavItem>
-            {MedSignedIn && <NavLink href="med-logout">Med Logout</NavLink>}
+            {MedSignedIn && <NavLink href="/med-logout">Med Logout</NavLink>}
           </NavItem>
           <NavItem>
             {PatientSignedIn && (
-              <NavLink href="patient-account">Patient Account</NavLink>
+              <NavLink href="/patient-home">Patient Account</NavLink>
             )}
           </NavItem>
           <NavItem>
             {PatientSignedIn && (
-              <NavLink href="patient-logout">Patient Logout</NavLink>
+              <NavLink href="/patient-logout">Patient Logout</NavLink>
             )}
           </NavItem>
         </Nav>

@@ -62,7 +62,7 @@ function App() {
       />
       <PatientProtectedRoute
         exact
-        path="/patient-home/:id"
+        path="/patient-home/"
         component={ParentHome}
       />
       <Route

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import AddChild from "../forms/AddChild";
 import ChildCardList from "../ChildCardList";
 import getToken from "../utils/api";
+import {
+    LightCard
+  } from "../utils/styledComponents.js";
 
 const ParentHome = (props) => {
     const [children, setChildren] = useState(null);
@@ -15,7 +18,7 @@ const ParentHome = (props) => {
             setRefresh(false);
         }
         getToken()
-            .get(`https://immunizationtracker-bw.herokuapp.com/api/user/${props.match.params.id}`)
+            .get(`https://immunizationtracker-bw.herokuapp.com/api/user/${localStorage.id}`)
             .then(res => {
                 //console.log("it worked:", res.data);
                 setChildren(res.data);
@@ -23,7 +26,7 @@ const ParentHome = (props) => {
             .catch(err => {
                 console.log("error:", err);
             });
-    }, [props.match.params.id, refresh]);
+    }, [localStorage.id, refresh]);
 
     useEffect(() => {
         if(children)
@@ -56,10 +59,13 @@ const ParentHome = (props) => {
             </div>
             <div>
                 <h2>Add Child</h2>
-                <AddChild 
-                        setRefresh={setRefresh} 
-                        patientEmail={localStorage.patientEmail ? localStorage.patientEmail : "err@err.com"} 
-                        userId={props.match.params.id}/>
+                <LightCard>
+                    <AddChild 
+                            setRefresh={setRefresh} 
+                            patientEmail={localStorage.patientEmail ? localStorage.patientEmail : "err@err.com"} 
+                            userId={props.match.params.id}
+                    />
+                </LightCard>
             </div>
         </>
     );
