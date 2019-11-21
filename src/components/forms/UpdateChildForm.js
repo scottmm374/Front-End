@@ -38,17 +38,17 @@ const UpdateChildForm = props => {
       });
   }, []);
 
-  const handleDelete = () => {
-    api()
-      .delete(`user/patient/${props.ChildId}`)
-      .then(res => {
-        // props.history.push("/");
-        console.log("deleted", res.data);
-      })
-      .catch(err => {
-        console.log("delete", err);
-      });
-  };
+  // const handleDelete = () => {
+  //   api()
+  //     .delete(`user/patient/${props.ChildId}`)
+  //     .then(res => {
+  //       // props.history.push("/");
+  //       console.log("deleted", res.data);
+  //     })
+  //     .catch(err => {
+  //       console.log("delete", err);
+  //     });
+  // };
 
   const handleUpdate = e => {
     e.preventDefault();
@@ -154,7 +154,7 @@ const UpdateChildForm = props => {
               onChange={handleChange}
             />
             <Button type="submit">Save Changes</Button>
-            <Button onClick={handleDelete}>Delete</Button>
+            {/* <Button onClick={handleDelete}>Delete</Button> */}
           </FormContainer>
         </FlexWarp>
       </form>

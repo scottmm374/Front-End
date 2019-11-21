@@ -9,6 +9,7 @@ import {
 // import UpdateChildForm from "../forms/UpdateChildForm.js";
 import UpdateChildToggle from "../views/UpdateChildToggle";
 import PermissionForm from "../forms/PermissionForm";
+import { Card, CardTitle, CardBody, Container, Col, Row } from "reactstrap";
 
 const ChildHome = props => {
   console.log(props.location.state);
@@ -20,10 +21,34 @@ const ChildHome = props => {
   return (
     <>
       <LightCard>
-        <h1>
+        <Card>
+          <CardTitle>
+            <h1>
+              {child.firstName} {child.lastName}{" "}
+              <p className="id">ID: {child.id}</p>
+            </h1>
+          </CardTitle>
+          <CardBody>
+            <Row>
+              <Col>
+                <h3>Gender</h3>
+                <p className="id">{child.gender}</p>
+                <h3>Age</h3>
+                <p className="id">{child.age}</p>
+              </Col>
+              <Col>
+                <h3>Weight</h3>
+                <p className="id">{child.weight}</p>
+                <h3>Height</h3>
+                <p className="id">{child.height}</p>
+              </Col>
+            </Row>
+          </CardBody>
+        </Card>
+        {/* <h1>
           {child.firstName} {child.lastName}
-        </h1>
-        <h3>Gender</h3>
+        </h1> */}
+        {/* <h3>Gender</h3>
         <p>{child.gender}</p>
         <h3>Age</h3>
         <p>{child.age}</p>
@@ -31,6 +56,8 @@ const ChildHome = props => {
         <p>{child.weight}</p>
         <h3>Height</h3>
         <p>{child.height}</p>
+        <h3>ID</h3>
+        <p>{child.id}</p> */}
         <UpdateChildToggle ChildId={child.id} />
       </LightCard>
       <LightCard>
