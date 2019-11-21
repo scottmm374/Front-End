@@ -3,39 +3,61 @@ import React from "react";
 import { getMedToken } from "../utils/medApi";
 import { getToken } from "../utils/api";
 import Logo from "../../images/Logo.svg";
+import styled from "styled-components";
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  NavbarText,
+  Container
+} from "reactstrap";
 
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+const NewLogo = styled.img`
+  border: none;
+  &:hover {
+    border: 1px solid #32ddaa;
+    padding: 3px;
+  }
+`;
 
 const Navigation = () => {
   const MedSignedIn = getMedToken();
   const PatientSignedIn = getToken();
   return (
-    <div>
-      <Navbar color="light" light expand="md">
+    <Container fluid>
+      <Navbar color="light" light expand="lg">
         <NavbarBrand href="/">
-          <img src={Logo} alt="im logo" />
+          <NewLogo src={Logo} alt="im logo" />
         </NavbarBrand>
 
         <Nav className="mr-auto" navbar>
           <NavItem>
-            {MedSignedIn && <NavLink href="med-account">Med Account</NavLink>}
+            {MedSignedIn && <NavLink href="/med-account">Med Account</NavLink>}
           </NavItem>
           <NavItem>
-            {MedSignedIn && <NavLink href="med-logout">Med Logout</NavLink>}
+            {MedSignedIn && <NavLink href="/med-logout">Med Logout</NavLink>}
           </NavItem>
           <NavItem>
             {PatientSignedIn && (
-              <NavLink href="patient-account">Patient Account</NavLink>
+              <NavLink href="/patient-account">Patient Account</NavLink>
             )}
           </NavItem>
           <NavItem>
             {PatientSignedIn && (
-              <NavLink href="patient-logout">Patient Logout</NavLink>
+              <NavLink href="/patient-logout">Patient Logout</NavLink>
             )}
           </NavItem>
         </Nav>
+        <NavLink
+          className="nav-link"
+          href="https://im-record-bevin.netlify.com/"
+        >
+          Learn More
+        </NavLink>
       </Navbar>
-    </div>
+    </Container>
   );
 };
 

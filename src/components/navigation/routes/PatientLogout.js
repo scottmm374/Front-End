@@ -5,6 +5,8 @@ import { Redirect } from "react-router-dom";
 
 function PatientLogout(props) {
   localStorage.removeItem("token");
+  localStorage.removeItem("patientEmail");
+  localStorage.removeItem("id");
 
   return <Redirect to="/patient-login" />;
 }
