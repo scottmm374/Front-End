@@ -12,10 +12,10 @@ import {
   FlexWarpAddChild
 } from "../utils/styledComponents.js";
 
-const AddChild = ({ touched, errors, setRefresh, patientEmail, userId }) => {
-  console.log(patientEmail, userId);
+const AddChild = ({ values, touched, errors}) => {
+  console.log(values);
   return (
-    <LightCardAddChild>
+    // <LightCardAddChild>
       <Form>
         <FlexWarpAddChild>
           <FormContainerAddChild>
@@ -103,7 +103,7 @@ const AddChild = ({ touched, errors, setRefresh, patientEmail, userId }) => {
           <ButtonAddChild type="submit">Add</ButtonAddChild>
         </FlexWarpAddChild>
       </Form>
-    </LightCardAddChild >
+    // </LightCardAddChild >
   );
 };
 
@@ -130,12 +130,11 @@ const FormikAddChildForm = withFormik({
     gender: Yup.string().required("Select a gender."),
     weight: Yup.string().required("Enter a weight in pounds."),
     height: Yup.string().required("Enter a height in inches."),
-    patientEmail: Yup.string().required("Please enter Parents Email"),
+    patientEmail: Yup.string().required("Please enter Parents Email")
     /*patientPhone: Yup.string(),*/
-    isChild: Yup.boolean()
   }),
 
-  handleSubmit(values, { props, setSubmitting, resetForm }) {
+  handleSubmit(values, { props, resetForm }) {
     console.log(values);
     api()
       .post("/user/addpatient", values)
