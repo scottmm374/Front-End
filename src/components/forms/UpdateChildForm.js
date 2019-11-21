@@ -56,6 +56,7 @@ const UpdateChildForm = props => {
       // .put((`/user/patient/${props.match.params.id}`), editChild)
       .put(`/user/patient/${props.ChildId}`, editChild)
       .then(res => {
+        setEditChild(res.data);
         window.location.reload();
         // props.history.push(`/child-account/${props.ChildId}`);
         console.log("editChild", res.data);
