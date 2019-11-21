@@ -71,6 +71,7 @@ export default withFormik({
       .post("/auth/user-login", values)
       .then(res => {
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("patientEmail", values.userEmail);
         // localStorage.setItem("parentId", res.data.id);
         setStatus(res.data);
         history.push(`/patient-home/${res.data.id}`);
