@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import history from "../../history";
+// import history from "../../history";
 import api from "../utils/api";
 import {
   Button,
@@ -24,7 +24,7 @@ const UpdateChildForm = props => {
     userId: ""
   });
 
-  console.log("history", props);
+  console.log("updateChild", props);
 
   useEffect(() => {
     api()
@@ -38,9 +38,17 @@ const UpdateChildForm = props => {
       });
   }, []);
 
-  // const patientEmail = localStorage.getItem("userEmail");
-  // const userId = localStorage.getItem("id");
-  // const userEmail = localStorage.getItem("userEmail")
+  const handleDelete = () => {
+    api()
+      .delete(`user/patient/${props.ChildId}`)
+      .then(res => {
+        // props.history.push("/");
+        console.log("deleted", res.data);
+      })
+      .catch(err => {
+        console.log("delete", err);
+      });
+  };
 
   const handleUpdate = e => {
     e.preventDefault();
@@ -48,7 +56,8 @@ const UpdateChildForm = props => {
       // .put((`/user/patient/${props.match.params.id}`), editChild)
       .put(`/user/patient/${props.ChildId}`, editChild)
       .then(res => {
-        props.history.push(`/child-account/${props.ChildId}`);
+        window.location.reload();
+        // props.history.push(`/child-account/${props.ChildId}`);
         console.log("editChild", res.data);
       })
       .catch(err => {
@@ -69,6 +78,7 @@ const UpdateChildForm = props => {
           <FormContainer>
             <NewLable>Parent Email</NewLable>
             <input
+              id="imForm"
               type="text"
               name="patientEmail"
               placeholder="Parent Email"
@@ -79,6 +89,7 @@ const UpdateChildForm = props => {
 
             <NewLable>Patient ID</NewLable>
             <input
+              id="imForm"
               type="text"
               name="userId"
               disabled
@@ -88,6 +99,7 @@ const UpdateChildForm = props => {
             />
             <NewLable>First Name</NewLable>
             <input
+              id="imForm"
               type="text"
               name="firstName"
               placeholder="First Name"
@@ -96,6 +108,7 @@ const UpdateChildForm = props => {
             />
             <NewLable>Last Name</NewLable>
             <input
+              id="imForm"
               type="text"
               name="lastName"
               placeholder="Last Name"
@@ -104,6 +117,7 @@ const UpdateChildForm = props => {
             />
             <NewLable>Age</NewLable>
             <input
+              id="imForm"
               type="text"
               name="age"
               placeholder="Age (years)"
@@ -113,6 +127,7 @@ const UpdateChildForm = props => {
 
             <NewLable>Gender</NewLable>
             <input
+              id="imForm"
               type="text"
               name="gender"
               placeholder="Gender"
@@ -122,6 +137,7 @@ const UpdateChildForm = props => {
 
             <NewLable>Weight</NewLable>
             <input
+              id="imForm"
               type="text"
               name="weight"
               placeholder="Weight (Lbs)"
@@ -130,6 +146,7 @@ const UpdateChildForm = props => {
             />
             <NewLable>Height</NewLable>
             <input
+              id="imForm"
               type="text"
               name="height"
               placeholder="Height (inches)"
@@ -137,6 +154,7 @@ const UpdateChildForm = props => {
               onChange={handleChange}
             />
             <Button type="submit">Save Changes</Button>
+            <Button onClick={handleDelete}>Delete</Button>
           </FormContainer>
         </FlexWarp>
       </form>

@@ -30,18 +30,24 @@ function MedicLoginForm({ errors, touched, status }) {
       <Form>
         <FlexWarp>
           <FormContainer>
-            <NewLable htmlFor="medicEmail">Email</NewLable>
+            <NewLable>Email</NewLable>
             {touched.medicEmail && errors.medicEmail && (
               <p>{errors.medicEmail}</p>
             )}
-            <Field type="text" name="medicEmail" placeholder="medicEmail" />
+            <Field
+              id="imForm"
+              type="text"
+              name="medicEmail"
+              placeholder="medicEmail"
+            />
           </FormContainer>
           <FormContainer>
-            <NewLable htmlFor="medicPassword">Password</NewLable>
+            <NewLable>Password</NewLable>
             {touched.medicPassword && errors.medicPassword && (
               <p>{errors.medicPassword}</p>
             )}
             <Field
+              id="imForm"
               type="text"
               name="medicPassword"
               placeholder="medicPassword"
