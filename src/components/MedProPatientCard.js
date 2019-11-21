@@ -24,7 +24,20 @@ const MedProPatientCard = props => {
     <LightCard>
       <H2>{`${props.data.firstName} ${props.data.lastName}`}</H2>
       <P>{`${props.data.gender} | ${props.data.age}`}</P>
-      {/* <Link to={`/med-account/${props.data.patientId}`}>View Details</Link>  */}
+      <Link
+        to={{
+          pathname: `/med-account/${props.data.patientId}`,
+          state: {
+            patientId: props.data.patientId, //props.location.state.keyName
+            firstName: props.data.firstName,
+            lastName: props.data.lastName,
+            gender: props.data.gender,
+            age: props.data.age
+          }
+        }}
+      >
+        Click This Link
+      </Link>
     </LightCard>
   );
 };

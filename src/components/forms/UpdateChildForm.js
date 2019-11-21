@@ -4,13 +4,14 @@ import api from "../utils/api";
 import {
   Button,
   LightCard,
-  BetterField,
   NewLable,
   FormContainer,
   FlexWarp
 } from "../utils/styledComponents.js";
 
 const UpdateChildForm = props => {
+  console.log("child props", props);
+  // const id = props.match.params.id;
   const [editChild, setEditChild] = useState({
     firstName: "",
     lastName: "",
@@ -27,7 +28,7 @@ const UpdateChildForm = props => {
 
   useEffect(() => {
     api()
-      .get("/user/patient/49")
+      .get(`/user/patient/${props.ChildId}`)
       .then(res => {
         setEditChild(res.data);
         console.log("get child", res.data);
@@ -45,9 +46,9 @@ const UpdateChildForm = props => {
     e.preventDefault();
     api()
       // .put((`/user/patient/${props.match.params.id}`), editChild)
-      .put("/user/patient/49", editChild)
+      .put(`/user/patient/${props.ChildId}`, editChild)
       .then(res => {
-        history.push(`/patient-home/${res.data.id}`);
+        props.history.push(`/child-account/${props.ChildId}`);
         console.log("editChild", res.data);
       })
       .catch(err => {

@@ -6,9 +6,11 @@ import MedProPatientCard from "./MedProPatientCard.js";
 const MedProPatientCardList = () => {
   const [patientData, setPatientData] = useState();
 
+  const getID = localStorage.id;
+
   useEffect(() => {
     getMedToken()
-      .get("perm/2")
+      .get(`perm/${getID}`)
       .then(res => {
         setPatientData(res.data);
 
@@ -26,10 +28,6 @@ const MedProPatientCardList = () => {
             return <MedProPatientCard data={cv} key={cv.patientId} />;
           })
         : ""}
-
-      {/* {patientData.map(cv => {
-        <MedProPatientCard data={cv} key={cv.id} />;
-      })} */}
     </div>
   );
 };
