@@ -45,6 +45,7 @@ function App() {
           component={SinglePatient}
         />
 
+
         {/* Patient routes */}
         <Route
           exact
@@ -73,6 +74,7 @@ function App() {
         />
       </div>
     </Container>
+
   );
 }
 

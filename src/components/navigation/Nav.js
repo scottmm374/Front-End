@@ -25,6 +25,7 @@ const NewLogo = styled.img`
 const Navigation = () => {
   const MedSignedIn = getMedToken();
   const PatientSignedIn = getToken();
+
   return (
     <Container fluid>
       <Navbar color="light" light expand="lg">
@@ -63,7 +64,7 @@ const Navigation = () => {
 
 export default Navigation;
 
-// const Nav = () => {
+// const  Nav = () => {
 //   const MedSignedIn = getMedToken();
 //   const PatientSignedIn = getToken();
 //   return (
