@@ -42,7 +42,7 @@ const Navigation = () => {
 
 export default Navigation;
 
-// const Nav = () => {
+// const  Nav = () => {
 //   const MedSignedIn = getMedToken();
 //   const PatientSignedIn = getToken();
 //   return (
