@@ -42,7 +42,7 @@ const UpdateChildForm = props => {
   //   api()
   //     .delete(`user/patient/${props.ChildId}`)
   //     .then(res => {
-  //       // props.history.push("/");
+  //       props.history.push("/");
   //       console.log("deleted", res.data);
   //     })
   //     .catch(err => {
@@ -56,9 +56,11 @@ const UpdateChildForm = props => {
       // .put((`/user/patient/${props.match.params.id}`), editChild)
       .put(`/user/patient/${props.ChildId}`, editChild)
       .then(res => {
-        setEditChild(res.data);
-        window.location.reload();
+        props.setChild(editChild);
+        //setEditChild(res.data);
+        //window.location.reload();
         // props.history.push(`/child-account/${props.ChildId}`);
+        
         console.log("editChild", res.data);
       })
       .catch(err => {

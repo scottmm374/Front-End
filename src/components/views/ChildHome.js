@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
 import {
   LightCard,
   BetterField,
@@ -12,12 +12,13 @@ import PermissionForm from "../forms/PermissionForm";
 import { Card, CardTitle, CardBody, Col, Row } from "reactstrap";
 
 import HistoryCard from "../HistoryCard";
+import DeleteUser from "../utils/DeleteUser";
 
 const ChildHome = props => {
-  console.log(props.location.state);
-  const child = props.location.state.child;
   const shots = props.location.state.shots;
-  console.log(child);
+  const [child, setChild] = useState(props.location.state.child);
+
+   //useEffect(() => {}, [child]);
 
   return (
     <>
@@ -47,38 +48,12 @@ const ChildHome = props => {
           </CardBody>
         </Card>
 
-        <UpdateChildToggle ChildId={child.id} />
+        <UpdateChildToggle ChildId={child.id} setChild={setChild}/>
+        <DeleteUser id={props.match.params.id}/>
       </LightCard>
       <LightCard>
         <h2>Immunization History</h2>
-        <table>
-          {shots.length === 0 ? (
-            <h3>No Record</h3>
-          ) : (
-            <thead>
-              <tr>
-                <th>Vaccine</th>
-                <th>Date</th>
-                <th>Location</th>
-              </tr>
-            </thead>
-          )}
-          {shots.length === 0 ? (
-            <></>
-          ) : (
-            shots.map(shot => {
-              return (
-                <thead key={shot.id}>
-                  <tr>
-                    <th>{shot.vaccineName}</th>
-                    <th>{shot.vaccineDate}</th>
-                    <th>{shot.vaccineLocation}</th>
-                  </tr>
-                </thead>
-              );
-            })
-          )}
-        </table>
+        <HistoryCard shots={shots} />
       </LightCard>
       <PermissionForm />
     </>
