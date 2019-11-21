@@ -41,7 +41,7 @@ const Navigation = () => {
           </NavItem>
           <NavItem>
             {PatientSignedIn && (
-              <NavLink href="/patient-account">Patient Account</NavLink>
+              <NavLink href="/patient-home">Patient Account</NavLink>
             )}
           </NavItem>
           <NavItem>
