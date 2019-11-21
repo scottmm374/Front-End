@@ -12,12 +12,13 @@ import PermissionForm from "../forms/PermissionForm";
 import { Card, CardTitle, CardBody, Col, Row } from "reactstrap";
 
 import HistoryCard from "../HistoryCard";
+import DeleteUser from "../utils/DeleteUser";
 
 const ChildHome = props => {
   const shots = props.location.state.shots;
   const [child, setChild] = useState(props.location.state.child);
 
-   useEffect(() => {}, [child]);
+   //useEffect(() => {}, [child]);
 
   return (
     <>
@@ -48,8 +49,10 @@ const ChildHome = props => {
         </Card>
 
         <UpdateChildToggle ChildId={child.id} setChild={setChild}/>
+        <DeleteUser id={props.match.params.id}/>
       </LightCard>
       <LightCard>
+        <h2>Immunization History</h2>
         <HistoryCard shots={shots} />
       </LightCard>
       <PermissionForm />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddChild from "../forms/AddChild";
 import ChildCardList from "../ChildCardList";
-import getToken from "../utils/api";
+import api from "../utils/api";
 import {
     LightCard
   } from "../utils/styledComponents.js";
@@ -17,8 +17,8 @@ const ParentHome = (props) => {
             setShots([]);
             setRefresh(false);
         }
-        getToken()
-            .get(`https://immunizationtracker-bw.herokuapp.com/api/user/${localStorage.id}`)
+        api()
+            .get(`/user/${localStorage.id}`)
             .then(res => {
                 //console.log("it worked:", res.data);
                 setChildren(res.data);
@@ -32,8 +32,8 @@ const ParentHome = (props) => {
         if(children)
         {
             children.map((child) => {
-                getToken()
-                    .get(`https://immunizationtracker-bw.herokuapp.com/api/record/${child.id}`)
+                api()
+                    .get(`/record/${child.id}`)
                     .then(res => {
                         //console.log("this also worked:", res.data);
                         //setShots(shots.concat([res.data]));
