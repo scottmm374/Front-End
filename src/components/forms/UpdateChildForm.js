@@ -60,7 +60,7 @@ const UpdateChildForm = props => {
         //setEditChild(res.data);
         //window.location.reload();
         // props.history.push(`/child-account/${props.ChildId}`);
-        
+
         console.log("editChild", res.data);
       })
       .catch(err => {
@@ -106,6 +106,7 @@ const UpdateChildForm = props => {
               type="text"
               name="firstName"
               placeholder="First Name"
+              required
               value={editChild.firstName}
               onChange={handleChange}
             />
@@ -115,6 +116,7 @@ const UpdateChildForm = props => {
               type="text"
               name="lastName"
               placeholder="Last Name"
+              required
               value={editChild.lastName}
               onChange={handleChange}
             />
@@ -124,6 +126,7 @@ const UpdateChildForm = props => {
               type="text"
               name="age"
               placeholder="Age (years)"
+              required
               value={editChild.age}
               onChange={handleChange}
             />
@@ -134,6 +137,7 @@ const UpdateChildForm = props => {
               type="text"
               name="gender"
               placeholder="Gender"
+              required
               value={editChild.gender}
               onChange={handleChange}
             />
@@ -144,6 +148,7 @@ const UpdateChildForm = props => {
               type="text"
               name="weight"
               placeholder="Weight (Lbs)"
+              required
               value={editChild.weight}
               onChange={handleChange}
             />
@@ -153,6 +158,7 @@ const UpdateChildForm = props => {
               type="text"
               name="height"
               placeholder="Height (inches)"
+              required
               value={editChild.height}
               onChange={handleChange}
             />
