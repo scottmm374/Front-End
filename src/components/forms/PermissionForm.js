@@ -1,31 +1,19 @@
-import React, { useState, useEffect } from "react";
-// import { getParentId } from "../utils/api";
-// import history from "../../history";
+import React, { useState } from "react";
 import api from "../utils/api";
 import {
   Button,
   LightCard,
-  BetterField,
   NewLable,
   FormContainer,
   FlexWarp
 } from "../utils/styledComponents.js";
 
 const PermissionForm = props => {
-  // const [updatePermission, setUpdatePermission] = useState({
-  //   permission: true,
-  //   patientId: 0,
-  //   medproId: 0
-  // });
-
   const [permission, setPermission] = useState({
     permission: true,
     patientId: "",
     medproId: ""
   });
-
-  // const id = props.params.match.id;
-  //   console.log("token", getParentId());
 
   const handlePermission = e => {
     e.preventDefault();
@@ -45,9 +33,7 @@ const PermissionForm = props => {
     setPermission({ ...permission, [e.target.name]: e.target.value });
   };
 
-  //   console.log("permission", res.data);
-  console.log("permission", permission);
-  // console.log("patient", updatePermission);
+  // console.log("permission", permission);
 
   return (
     <LightCard>
@@ -73,16 +59,6 @@ const PermissionForm = props => {
               value={permission.id}
               onChange={handleChange}
             />
-            {/* <label>
-           <NewLable htmlFor="vaccineDate"> Date Administered</NewLable>
-          <input
-            type="radio"
-            name="permission"
-            value="true"
-            checked={true}
-            onChange={handleChange}
-          />
-        </label> */}
 
             <Button>Give Permission</Button>
           </FormContainer>

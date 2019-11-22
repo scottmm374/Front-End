@@ -18,7 +18,7 @@ function DeleteUser(props) {
 
   return (
     <>
-      <DeleteButton onClick={handleDelete}>Delete</DeleteButton>
+      <DeleteButton onClick={handleDelete}>Remove Child</DeleteButton>
     </>
   );
 }
