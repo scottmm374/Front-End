@@ -53,7 +53,7 @@ function PatientRegistrationForm({ errors, touched, status, history }) {
             )}
             <Field
               id="imForm"
-              type="text"
+              type="password"
               name="userPassword"
               placeholder="Password"
             />

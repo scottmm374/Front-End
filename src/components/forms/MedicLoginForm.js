@@ -48,7 +48,7 @@ function MedicLoginForm({ errors, touched, status }) {
             )}
             <Field
               id="imForm"
-              type="text"
+              type="password"
               name="medicPassword"
               placeholder="medicPassword"
             />

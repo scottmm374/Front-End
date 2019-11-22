@@ -41,7 +41,7 @@ function PatientLoginForm({ errors, touched, status }) {
             )}
             <Field
               id="imForm"
-              type="text"
+              type="password"
               name="userPassword"
               placeholder="Password"
             />
