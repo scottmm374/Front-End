@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import history from "../../history";
 import api from "../utils/api";
 import {
   Button,
@@ -11,7 +10,7 @@ import {
 
 const UpdateChildForm = props => {
   console.log("child props", props);
-  // const id = props.match.params.id;
+
   const [editChild, setEditChild] = useState({
     firstName: "",
     lastName: "",
@@ -38,29 +37,12 @@ const UpdateChildForm = props => {
       });
   }, []);
 
-  // const handleDelete = () => {
-  //   api()
-  //     .delete(`user/patient/${props.ChildId}`)
-  //     .then(res => {
-  //       props.history.push("/");
-  //       console.log("deleted", res.data);
-  //     })
-  //     .catch(err => {
-  //       console.log("delete", err);
-  //     });
-  // };
-
   const handleUpdate = e => {
     e.preventDefault();
     api()
-      // .put((`/user/patient/${props.match.params.id}`), editChild)
       .put(`/user/patient/${props.ChildId}`, editChild)
       .then(res => {
         props.setChild(editChild);
-        //setEditChild(res.data);
-        //window.location.reload();
-        // props.history.push(`/child-account/${props.ChildId}`);
-        
         console.log("editChild", res.data);
       })
       .catch(err => {
@@ -106,6 +88,7 @@ const UpdateChildForm = props => {
               type="text"
               name="firstName"
               placeholder="First Name"
+              required
               value={editChild.firstName}
               onChange={handleChange}
             />
@@ -115,6 +98,7 @@ const UpdateChildForm = props => {
               type="text"
               name="lastName"
               placeholder="Last Name"
+              required
               value={editChild.lastName}
               onChange={handleChange}
             />
@@ -124,6 +108,7 @@ const UpdateChildForm = props => {
               type="text"
               name="age"
               placeholder="Age (years)"
+              required
               value={editChild.age}
               onChange={handleChange}
             />
@@ -134,6 +119,7 @@ const UpdateChildForm = props => {
               type="text"
               name="gender"
               placeholder="Gender"
+              required
               value={editChild.gender}
               onChange={handleChange}
             />
@@ -144,6 +130,7 @@ const UpdateChildForm = props => {
               type="text"
               name="weight"
               placeholder="Weight (Lbs)"
+              required
               value={editChild.weight}
               onChange={handleChange}
             />
@@ -153,11 +140,13 @@ const UpdateChildForm = props => {
               type="text"
               name="height"
               placeholder="Height (inches)"
+              required
               value={editChild.height}
               onChange={handleChange}
             />
-            <Button type="submit">Save Changes</Button>
-            {/* <Button onClick={handleDelete}>Delete</Button> */}
+            <Button type="submit" onClick={props.toggle}>
+              Save Changes
+            </Button>
           </FormContainer>
         </FlexWarp>
       </form>

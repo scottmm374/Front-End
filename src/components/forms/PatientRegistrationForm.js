@@ -6,7 +6,6 @@ import api from "../utils/api";
 import {
   Button,
   LightCard,
-  BetterField,
   NewLable,
   FormContainer,
   FlexWarp
@@ -69,7 +68,6 @@ function PatientRegistrationForm({ errors, touched, status, history }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
-      // history: values.history,
       userName: values.userName || "",
       userEmail: values.userEmail || "",
       userPassword: values.userPassword || ""
@@ -96,13 +94,12 @@ export default withFormik({
   }),
 
   handleSubmit: (values, { setStatus }) => {
-    console.log(" REgistration", values);
+    // console.log(" REgistration", values);
 
     api()
       .post("/auth/user-register", values)
       .then(res => {
         setStatus(res.data);
-        // Push throws server error
         history.push("/patient-login");
 
         console.log("register res", res.data);

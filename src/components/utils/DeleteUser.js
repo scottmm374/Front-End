@@ -1,11 +1,10 @@
 import React from "react";
-import history from "../../history"
+import history from "../../history";
 import api from "./api";
-import { Button } from "./styledComponents";
+import { DeleteButton } from "./styledComponents";
 
 function DeleteUser(props) {
   const handleDelete = () => {
-
     api()
       .delete(`user/patient/${props.id}`)
       .then(res => {
@@ -19,7 +18,7 @@ function DeleteUser(props) {
 
   return (
     <>
-      <Button onClick={handleDelete}>Delete</Button>
+      <DeleteButton onClick={handleDelete}>Remove Child</DeleteButton>
     </>
   );
 }

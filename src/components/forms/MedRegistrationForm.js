@@ -6,7 +6,6 @@ import medApi from "../utils/medApi";
 import {
   Button,
   LightCard,
-  BetterField,
   NewLable,
   FormContainer,
   FlexWarp
@@ -100,7 +99,6 @@ function MedRegistrationForm({ errors, touched, status }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
-      // history: values.history,
       medicFirstName: values.medicFirstName || "",
       medicLastName: values.medicLastName || "",
       medicEmail: values.medicEmail || "",
@@ -129,13 +127,12 @@ export default withFormik({
   }),
 
   handleSubmit: (values, { setStatus }) => {
-    console.log("Med Reg", values);
+    // console.log("Med Reg", values);
 
     medApi()
       .post("/auth/med-register", values)
       .then(res => {
         setStatus(res.data);
-        // this causes Nav to show incorrect navigation and saves as Token rather then medtoken
         history.push("/med-login");
         console.log(" med register res", res.data);
       })

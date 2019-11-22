@@ -84,4 +84,21 @@ export const Highlight = styled.span`
   color: #32ddaa;
 `;
 
+export const DeleteButton = styled.button`
+  background: red;
+  color: #ffffff;
+  &:hover {
+    background: #ffffff;
+    border: 1px solid red;
+    color: red;
+  }
+  border-radius: 4px;
+  border: none;
+  margin: auto 15px;
+  padding: 14px 25px;
+  font-weight: bold;
+  font-size: 16px;
+  max-height: 50px;
+`;
+
 /* For ChildHome.js */

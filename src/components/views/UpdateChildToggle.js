@@ -33,7 +33,11 @@ const Example = props => {
       <Collapse isOpen={isOpen}>
         <Card>
           <CardBody>
-            <UpdateChildForm ChildId={props.ChildId} setChild={props.setChild}/>
+            <UpdateChildForm
+              ChildId={props.ChildId}
+              setChild={props.setChild}
+              toggle={toggle}
+            />
           </CardBody>
         </Card>
       </Collapse>

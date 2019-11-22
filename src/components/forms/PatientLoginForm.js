@@ -57,7 +57,6 @@ function PatientLoginForm({ errors, touched, status }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
-      // history: values.history,
       userEmail: values.userEmail || "",
       userPassword: values.userPassword || ""
     };
@@ -75,7 +74,7 @@ export default withFormik({
   }),
 
   handleSubmit: (values, { setStatus }) => {
-    console.log(" patient login", values);
+    // console.log(" patient login", values);
 
     api()
       .post("/auth/user-login", values)
@@ -83,7 +82,6 @@ export default withFormik({
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("patientEmail", values.userEmail);
         localStorage.setItem("id", res.data.id);
-        // localStorage.setItem("parentId", res.data.id);
         setStatus(res.data);
         history.push(`/patient-home/`);
         console.log("Login patient", res.data);

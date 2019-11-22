@@ -64,7 +64,6 @@ function MedicLoginForm({ errors, touched, status }) {
 export default withFormik({
   mapPropsToValues: values => {
     return {
-      // history: values.history,
       medicEmail: values.medicEmail || "",
       medicPassword: values.medicPassword || ""
     };
@@ -82,7 +81,7 @@ export default withFormik({
   }),
 
   handleSubmit: (values, { setStatus }) => {
-    console.log(" med login", values);
+    // console.log(" med login", values);
 
     medApi()
       .post("/auth/med-login", values)
