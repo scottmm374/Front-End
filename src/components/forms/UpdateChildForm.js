@@ -162,7 +162,9 @@ const UpdateChildForm = props => {
               value={editChild.height}
               onChange={handleChange}
             />
-            <Button type="submit">Save Changes</Button>
+            <Button type="submit" onClick={props.toggle}>
+              Save Changes
+            </Button>
             {/* <Button onClick={handleDelete}>Delete</Button> */}
           </FormContainer>
         </FlexWarp>
