@@ -1,9 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import { LightCard } from "./utils/styledComponents.js";
 import { Link } from "react-router-dom";
 
 //Styles
+
+const LightCard = styled.div`
+  background: #ffffff;
+  border: solid 2px #bdbdbd;
+  border-radius: 6px;
+  margin: 20px;
+  padding: 20px;
+  min-width: 250px;
+  transition: all 0.5s;
+  &:hover {
+    border: solid 2px #32ddaa;
+  }
+`;
 
 const H2 = styled.h2`
   font-size: 22px;

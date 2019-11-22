@@ -3,6 +3,13 @@ import styled from "styled-components";
 import getMedToken from "./utils/medApi";
 import MedProPatientCard from "./MedProPatientCard.js";
 
+const Container = styled.div`
+  display: flex;
+  flex-flow: wrap;
+  width: 1200px;
+  margin: 0 auto;
+`;
+
 const MedProPatientCardList = () => {
   const [patientData, setPatientData] = useState();
 
@@ -22,13 +29,13 @@ const MedProPatientCardList = () => {
   }, []);
   console.log("useState Data:", patientData);
   return (
-    <div>
+    <Container>
       {patientData
         ? patientData.map(cv => {
             return <MedProPatientCard data={cv} key={cv.patientId} />;
           })
         : ""}
-    </div>
+    </Container>
   );
 };
 
