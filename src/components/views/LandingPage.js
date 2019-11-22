@@ -18,17 +18,13 @@ function LandingPage() {
           <CardText>
             <p>
               As a parent, it's hard to keep track of your child's immunization
-              records! Especially if you move states, or switch doctors. It's a
-              pain to call around and figure out which immunizations your child
-              still needs, or to have them mail you proof for things like school
-              registration.
+              records! Especially if you move states, or switch doctors. This
+              app allows medical professionals to upload immunization records to
+              your personal or family account.
             </p>
             <p>
-              {" "}
-              As an adult, it's even harder to access these records for travel
-              that requires immunizations or booster shots. This app allows
-              medical professionals to upload immunization records to your
-              personal or family account.
+              Sign up now, and have your childs immunization records available
+              to you at all times.
             </p>
           </CardText>
           <h1>Choose your role.</h1>
