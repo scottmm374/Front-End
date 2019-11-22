@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import getMedToken from "../utils/medApi.js";
-import Records from "../ImmunizationRecords.js";
+import HistoryCard from "../ChildCardList.js";
+import AddImmunization from "../forms/AddImmunization.js";
 
 const SinglePatient = props => {
   const [records, setRecords] = useState(null);
@@ -23,7 +24,10 @@ const SinglePatient = props => {
   }
   return (
     <>
-      <h2>Immunization History</h2>
+      <h2>{`${props.location.state.firstName} ${props.location.state.lastName}'s`}</h2>
+      <h3>Immunization Records</h3>
+
+      <AddImmunization patientId={props.location.state.patientId} />
 
       <table>
         {records.length === 0 ? (
@@ -58,18 +62,3 @@ const SinglePatient = props => {
 };
 
 export default SinglePatient;
-
-// <div>
-//   <h2>
-//     Hello:
-//     <span>{`${props.location.state.firstName} ${props.location.state.lastName}`}</span>
-//   </h2>
-
-//   <div>
-//     {records
-//       ? records.map(cv => {
-//           return <Records data={cv} />;
-//         })
-//       : ""}
-//   </div>
-// </div>

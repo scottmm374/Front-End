@@ -18,19 +18,6 @@ const AddImmunization = ({ touched, errors, isSubmitting }) => {
       <Form>
         <FlexWarp>
           <FormContainer>
-            <NewLable htmlFor="vaccineDate"> Date Administered</NewLable>
-            <Field
-              type="text"
-              name="vaccineDate"
-              placeholder="Example: 04/05/1995"
-              id="imForm"
-            />
-            {touched.vaccineDate && errors.vaccineDate && (
-              <p>Please Add Date</p>
-            )}
-          </FormContainer>
-
-          <FormContainer>
             <NewLable htmlFor="vaccineName"> Immunization and Dose</NewLable>
             <Field
               type="text"
@@ -39,6 +26,19 @@ const AddImmunization = ({ touched, errors, isSubmitting }) => {
               id="imForm"
             />
             {touched.vaccineName && errors.vaccineName && (
+              <p>Please Add Date</p>
+            )}
+          </FormContainer>
+
+          <FormContainer>
+            <NewLable htmlFor="vaccineDate"> Date Administered</NewLable>
+            <Field
+              type="text"
+              name="vaccineDate"
+              placeholder="Example: 04/05/1995"
+              id="imForm"
+            />
+            {touched.vaccineDate && errors.vaccineDate && (
               <p>Please Add Date</p>
             )}
           </FormContainer>
@@ -75,7 +75,7 @@ export default withFormik({
       vaccineDate: values.vaccineDate || "",
       vaccineName: values.vaccineName || "",
       vaccineLocation: values.vaccineLocation || "",
-      patientId: 1
+      patientId: values.patientId
     };
   },
   validationSchema: yup.object().shape({
