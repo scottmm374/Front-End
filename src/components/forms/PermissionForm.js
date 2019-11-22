@@ -32,6 +32,7 @@ const PermissionForm = props => {
     api()
       .post("perm/add", permission)
       .then(res => {
+        alert("Permission Granted");
         window.location.reload();
         console.log("perm", res.data);
       })
