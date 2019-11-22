@@ -55,7 +55,7 @@ const Navigation = () => {
         </Nav>
         <NavLink
           className="nav-link"
-          href="https://im-record-bevin.netlify.com/"
+          href="https://deploy-preview-3--im-record-shawn.netlify.com/"
         >
           Learn More
         </NavLink>
