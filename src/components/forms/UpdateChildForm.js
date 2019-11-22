@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import history from "../../history";
 import api from "../utils/api";
 import {
   Button,
@@ -11,7 +10,7 @@ import {
 
 const UpdateChildForm = props => {
   console.log("child props", props);
-  // const id = props.match.params.id;
+
   const [editChild, setEditChild] = useState({
     firstName: "",
     lastName: "",
@@ -38,29 +37,12 @@ const UpdateChildForm = props => {
       });
   }, []);
 
-  // const handleDelete = () => {
-  //   api()
-  //     .delete(`user/patient/${props.ChildId}`)
-  //     .then(res => {
-  //       props.history.push("/");
-  //       console.log("deleted", res.data);
-  //     })
-  //     .catch(err => {
-  //       console.log("delete", err);
-  //     });
-  // };
-
   const handleUpdate = e => {
     e.preventDefault();
     api()
-      // .put((`/user/patient/${props.match.params.id}`), editChild)
       .put(`/user/patient/${props.ChildId}`, editChild)
       .then(res => {
         props.setChild(editChild);
-        //setEditChild(res.data);
-        //window.location.reload();
-        // props.history.push(`/child-account/${props.ChildId}`);
-
         console.log("editChild", res.data);
       })
       .catch(err => {
@@ -165,7 +147,6 @@ const UpdateChildForm = props => {
             <Button type="submit" onClick={props.toggle}>
               Save Changes
             </Button>
-            {/* <Button onClick={handleDelete}>Delete</Button> */}
           </FormContainer>
         </FlexWarp>
       </form>
