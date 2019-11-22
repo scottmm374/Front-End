@@ -1,8 +1,6 @@
 # Front-End
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a9a9d0a8-d769-434d-88e6-887b4746d6cb/deploy-status)](https://app.netlify.com/sites/im-record/deploys)
-
-[Visit IM-Records](https://im-record.netlify.com/)
+[Visit IM-Records](https://front-end-git-michelle-scott.im-records.now.sh/)
 
 "**Important: Do not use any data about real people in this app as it could be a violation of HIPAA regulations**
 
