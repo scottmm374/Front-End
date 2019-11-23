@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import getMedToken from "../utils/medApi.js";
-import HistoryCard from "../ChildCardList.js";
+import HistoryCard from "../HistoryCard";
 import AddImmunization from "../forms/AddImmunization.js";
 
 const SinglePatient = props => {
@@ -29,7 +29,9 @@ const SinglePatient = props => {
 
       <AddImmunization patientId={props.location.state.patientId} />
 
-      <table>
+      <HistoryCard shots={records} />
+
+      {/* <table>
         {records.length === 0 ? (
           <h3>No Record</h3>
         ) : (
@@ -56,7 +58,7 @@ const SinglePatient = props => {
             );
           })
         )}
-      </table>
+      </table> */}
     </>
   );
 };
