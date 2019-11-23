@@ -47,6 +47,7 @@ const ChildHome = props => {
                 <p className="id">{child.height}</p>
               </Col>
             </Row>
+
             <p>Parent email : {addPatient.email}</p>
           </CardBody>
         </Card>
