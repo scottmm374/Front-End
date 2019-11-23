@@ -55,3 +55,13 @@ img {
   font-size: 2rem;
   color: #32ddaa;
 }
+
+th {
+  padding: 10px 50px;
+  text-align: left;
+  transition: 0.5s;
+}
+
+tr {
+  padding: 10px 15px;
+}

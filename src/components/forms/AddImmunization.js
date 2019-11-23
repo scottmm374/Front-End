@@ -84,16 +84,17 @@ export default withFormik({
     vaccineLocation: yup.string().required()
   }),
   //Post Works
-  handleSubmit: (values, { setSubmitting, resetForm }) => {
+  handleSubmit: (values, { props, setSubmitting, resetForm }) => {
     getMedToken()
       .post("/record/addImmunization", values)
       .then(res => {
         console.log("it worked:", res.data);
+        props.setRefresh(true);
+        resetForm();
       })
       .catch(err => {
         console.log("error:", err);
         setSubmitting(false);
-        resetForm();
       });
   }
 })(AddImmunization);
