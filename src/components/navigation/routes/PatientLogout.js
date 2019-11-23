@@ -8,7 +8,9 @@ function PatientLogout(props) {
 
   localStorage.removeItem("patientEmail");
   localStorage.removeItem("id");
-
+  localStorage.removeItem("message");
+  localStorage.removeItem("userEmail");
+  localStorage.removeItem("userName");
 
   return <Redirect to="/patient-login" />;
 }

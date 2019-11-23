@@ -14,15 +14,24 @@ import ParentHome from "./components/views/ParentHome";
 import ChildHome from "./components/views/ChildHome";
 import MedHome from "./components/views/MedHome.js";
 import SinglePatient from "./components/views/SinglePatient.js";
+import { PatientInfoContext } from "./context/PatientInfoContext";
 import { Container } from "reactstrap";
 import "./App.css";
 
 function App() {
+  const message = localStorage.getItem("message");
+  const email = localStorage.getItem("patientEmail");
+  console.log("message", message);
+  const addPatient = {
+    message,
+    email
+  };
+
   return (
     <Container>
       <div className="App">
         <Nav />
-        <Route exact path="/" component={LandingPage} />
+        {/* <Route exact path="/" component={LandingPage} /> */}
         {/*  Routes  if protected route, requires token to be set. */}
         {/* Med routes */}
         <Route
@@ -34,31 +43,34 @@ function App() {
           path="/med-register"
           render={props => <MedRegistrationForm {...props} />}
         />
-        {/* // * Place Med landing page in this component */}
         <MedProtectedRoute exact path="/med-account" component={MedHome} />
 
         <MedProtectedRoute path="/med-account/:id" component={SinglePatient} />
 
         {/* Patient routes */}
-        <Route
-          path="/patient-login"
-          render={props => <PatientLoginForm {...props} />}
-        />
+
+        <PatientInfoContext.Provider value={addPatient}>
+          <Route
+            path="/patient-login"
+            render={props => <PatientLoginForm {...props} />}
+          />
+
+          <Route exact path="/" component={LandingPage} />
+          <PatientProtectedRoute path="/patient-home/" component={ParentHome} />
+          <Route
+            path="/child-account/:id"
+            render={props => <ChildHome {...props} />}
+          />
+        </PatientInfoContext.Provider>
+
         <Route
           path="/patient-register"
           render={props => <PatientRegistrationForm {...props} />}
         />
+
         <PatientProtectedRoute
           path="/patient-logout"
           component={PatientLogout}
-        />
-        <PatientProtectedRoute
-          path="/patient-home/"
-          component={ParentHome}
-        />
-        <Route
-          path="/child-account/:id"
-          render={props => <ChildHome {...props} />}
         />
       </div>
     </Container>
