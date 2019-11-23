@@ -1,4 +1,5 @@
-import React, {useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { PatientInfoContext } from "../../context/PatientInfoContext";
 import {
   LightCard,
   BetterField,
@@ -15,10 +16,11 @@ import HistoryCard from "../HistoryCard";
 import DeleteUser from "../utils/DeleteUser";
 
 const ChildHome = props => {
+  const addPatient = useContext(PatientInfoContext);
   const shots = props.location.state.shots;
   const [child, setChild] = useState(props.location.state.child);
 
-   //useEffect(() => {}, [child]);
+  //useEffect(() => {}, [child]);
 
   return (
     <>
@@ -45,11 +47,12 @@ const ChildHome = props => {
                 <p className="id">{child.height}</p>
               </Col>
             </Row>
+            <p>Parent email : {addPatient.email}</p>
           </CardBody>
         </Card>
 
-        <UpdateChildToggle ChildId={child.id} setChild={setChild}/>
-        <DeleteUser id={props.match.params.id}/>
+        <UpdateChildToggle ChildId={child.id} setChild={setChild} />
+        <DeleteUser id={props.match.params.id} />
       </LightCard>
       <LightCard>
         <h2>Immunization History</h2>
