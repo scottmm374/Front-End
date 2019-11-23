@@ -88,6 +88,7 @@ export default withFormik({
       .then(res => {
         localStorage.setItem("medtoken", res.data.medtoken);
         localStorage.setItem("id", res.data.id);
+        localStorage.setItem("message", res.data.message);
         setStatus(res.data);
 
         history.push("/med-account");
