@@ -12,103 +12,88 @@ import {
   FlexWarpAddChild
 } from "../utils/styledComponents.js";
 
-const AddChild = ({ values, touched, errors}) => {
+const AddChild = ({ values, touched, errors }) => {
   console.log(values);
   return (
     // <LightCardAddChild>
-      <Form>
-        <FlexWarpAddChild>
-          <FormContainerAddChild>
-            <NewLable htmlFor="firstName">First Name</NewLable>
-            <Field
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-            />
-            {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
-          </FormContainerAddChild>
-          
-          <FormContainerAddChild>
-            <NewLable htmlFor="lastName">Last Name</NewLable>
-            <Field
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-            />
-            {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
-          </FormContainerAddChild>
+    <Form>
+      <FlexWarpAddChild>
+        <FormContainerAddChild>
+          <NewLable htmlFor="firstName">First Name</NewLable>
+          <Field type="text" name="firstName" placeholder="First Name" />
+          {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
+        </FormContainerAddChild>
 
-          <FormContainerAddChild>
-            <NewLable htmlFor="age">Age</NewLable>
-            <Field
-              component="select"
-              name="age"
-              placeholder="Age (years)"
-            >
-              <option>Age (years)</option>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-            </Field>
-            {touched.age && errors.age && <p>{errors.age}</p>}
-          </FormContainerAddChild>
+        <FormContainerAddChild>
+          <NewLable htmlFor="lastName">Last Name</NewLable>
+          <Field type="text" name="lastName" placeholder="Last Name" />
+          {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
+        </FormContainerAddChild>
 
-          <FormContainerAddChild>
-            <NewLable htmlFor="gender">Gender</NewLable>
-            <Field
-              component="select"
-              name="gender"
-              placeholder="Gender"
-            >
-              <option>Age (years)</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </Field>
-            {touched.gender && errors.gender && <p>{errors.gender}</p>}
-          </FormContainerAddChild>
+        <FormContainerAddChild>
+          <NewLable htmlFor="age">Age</NewLable>
+          <Field component="select" name="age" placeholder="Age (years)">
+            <option>Age (years)</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+          </Field>
+          {touched.age && errors.age && <p>{errors.age}</p>}
+        </FormContainerAddChild>
 
-          <FormContainerAddChild>
-            <NewLable htmlFor="weight">Weight</NewLable>
-            <Field
-              type="text"
-              name="weight"
-              placeholder="Weight (Lbs)"
-            />
-            {touched.weight && errors.weight && <p>{errors.weight}</p>}
-          </FormContainerAddChild>
-          <FormContainerAddChild>
-            <NewLable htmlFor="height">Height</NewLable>
-            <Field
-              type="text"
-              name="height"
-              placeholder="Height (inches)"
-            />
-            {touched.height && errors.height && <p>{errors.height}</p>}
-          </FormContainerAddChild>
-          <ButtonAddChild type="submit">Add</ButtonAddChild>
-        </FlexWarpAddChild>
-      </Form>
+        <FormContainerAddChild>
+          <NewLable htmlFor="gender">Gender</NewLable>
+          <Field component="select" name="gender" placeholder="Gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </Field>
+          {touched.gender && errors.gender && <p>{errors.gender}</p>}
+        </FormContainerAddChild>
+
+        <FormContainerAddChild>
+          <NewLable htmlFor="weight">Weight</NewLable>
+          <Field type="text" name="weight" placeholder="Weight (Lbs)" />
+          {touched.weight && errors.weight && <p>{errors.weight}</p>}
+        </FormContainerAddChild>
+        <FormContainerAddChild>
+          <NewLable htmlFor="height">Height</NewLable>
+          <Field type="text" name="height" placeholder="Height (inches)" />
+          {touched.height && errors.height && <p>{errors.height}</p>}
+        </FormContainerAddChild>
+        <ButtonAddChild type="submit">Add</ButtonAddChild>
+      </FlexWarpAddChild>
+    </Form>
     // </LightCardAddChild >
   );
 };
 
 const FormikAddChildForm = withFormik({
-  mapPropsToValues({ firstName, lastName, age, gender, weight, height, patientEmail, /*patientPhone,*/ isChild, userId }) {
+  mapPropsToValues({
+    firstName,
+    lastName,
+    age,
+    gender,
+    weight,
+    height,
+    patientEmail,
+    /*patientPhone,*/ isChild,
+    userId
+  }) {
     return {
       firstName: firstName || "",
       lastName: lastName || "",

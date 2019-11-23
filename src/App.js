@@ -37,23 +37,6 @@ function App() {
     <Container>
       <div className="App">
         <Nav />
-        {/* <Route exact path="/" component={LandingPage} /> */}
-        {/*  Routes  if protected route, requires token to be set. */}
-        {/* Med routes */}
-        <Route
-          path="/med-login"
-          render={props => <MedicLoginForm {...props} />}
-        />
-        <MedProtectedRoute exact path="/med-logout" component={MedLogout} />
-        <Route
-          path="/med-register"
-          render={props => <MedRegistrationForm {...props} />}
-        />
-
-        <MedProtectedRoute path="/med-account/:id" component={SinglePatient} />
-
-        {/* Patient routes */}
-
         <PatientInfoContext.Provider value={addPatient}>
           <MedInfoContext.Provider value={addDR}>
             <MedProtectedRoute exact path="/med-account" component={MedHome} />
@@ -74,6 +57,18 @@ function App() {
             />
           </MedInfoContext.Provider>
         </PatientInfoContext.Provider>
+
+        <Route
+          path="/med-login"
+          render={props => <MedicLoginForm {...props} />}
+        />
+        <MedProtectedRoute exact path="/med-logout" component={MedLogout} />
+        <Route
+          path="/med-register"
+          render={props => <MedRegistrationForm {...props} />}
+        />
+
+        <MedProtectedRoute path="/med-account/:id" component={SinglePatient} />
 
         <Route
           path="/patient-register"
