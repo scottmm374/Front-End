@@ -1,4 +1,5 @@
 import React from "react";
+import history from "../../history";
 import {
   Button,
   LightCard,
@@ -89,7 +90,8 @@ export default withFormik({
       .post("/record/addImmunization", values)
       .then(res => {
         console.log("it worked:", res.data);
-        props.setRefresh(true);
+        window.location.reload();
+        // props.setRefresh(true);
         resetForm();
       })
       .catch(err => {
