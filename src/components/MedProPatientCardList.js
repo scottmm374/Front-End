@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import getMedToken from "./utils/medApi";
 import MedProPatientCard from "./MedProPatientCard.js";
+import { DrInfoContext } from "../context/DrInfoContext";
 
 const Container = styled.div`
   display: flex;
@@ -10,8 +11,9 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const MedProPatientCardList = () => {
-  const [patientData, setPatientData] = useState();
+const MedProPatientCardList = props => {
+  // const [patientData, setPatientData] = useState();
+  const patientInfo = useContext(DrInfoContext);
 
   const getID = localStorage.id;
 
@@ -19,7 +21,7 @@ const MedProPatientCardList = () => {
     getMedToken()
       .get(`perm/${getID}`)
       .then(res => {
-        setPatientData(res.data);
+        patientInfo.setPatientData(res.data);
 
         console.log("Grabbed:", res.data);
       })
@@ -27,11 +29,11 @@ const MedProPatientCardList = () => {
         console.log("errored:", err);
       });
   }, []);
-  console.log("useState Data:", patientData);
+  console.log("useState Data:", patientInfo.patientData);
   return (
     <Container>
-      {patientData
-        ? patientData.map(cv => {
+      {patientInfo.patientData
+        ? patientInfo.patientData.map(cv => {
             return <MedProPatientCard data={cv} key={cv.patientId} />;
           })
         : ""}
