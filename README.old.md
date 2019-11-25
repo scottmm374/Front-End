@@ -16,7 +16,9 @@ https://immunizationtracker-bw.herokuapp.com/
 
 ### _PATIENT - REFERS TO ANYONE CREATED UNDER USER ACCOUNT (GENERALLY CHILDREN)_
 
---
+#### back-end URL
+
+## https://github.com/immunization-tracking-buildweek/Back-End
 
 # USER REGISTRATION & LOGIN
 
@@ -33,7 +35,7 @@ Server returns:
 {
 "id": 12,
 "userEmail": "ladygaga@gmail.com",
-"userPassword": "$2a$08\$1ZIraMWTVOs/evXVXBG83OcS6ZZmAnTxrUoMh6ZY.2eLzSBoq5xy2",
+"userPassword": "Long-Encrypted-password",
 "userName": "Lady Gaga"
 }
 
@@ -79,7 +81,7 @@ Server returns:
 {
 "id": 73,
 "medicEmail": "tcole@gmail.com",
-"medicPassword": "$2a$08\$N006ABFHIGk60eGfSCuwhOVcxblLk9z9hxCA99nPlRlloHTWpnZ9G",
+"medicPassword": "Long-Encrypted-password",
 "medicFirstName": "Tara",
 "medicLastName": "Cole",
 "company": "Beaumont",
