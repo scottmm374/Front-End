@@ -10,11 +10,12 @@ const LightCard = styled.div`
   padding: 20px;
   min-width: 250px;
   transition: all 0.5s;
+  box-shadow: 0px 5px 10px lightgrey;
   &:hover {
     border: solid 2px #32ddaa;
+    box-shadow: 0px 5px 10px #32ddaa;
   }
 `;
-
 const H2 = styled.h2`
   font-size: 22px;
   font-weight: bold;

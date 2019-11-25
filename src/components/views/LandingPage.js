@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 function LandingPage() {
   return (
-    <Container fluid>
+    <Container>
       <Jumbotron>
         <img src={HeaderImg} alt="Man with baby" />
       </Jumbotron>
