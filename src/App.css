@@ -47,9 +47,11 @@ nav {
   color: rgba(0, 0, 0, 0.5);
 }
 
-/* .card-body {
-  padding: 7.25rem;
-} */
+.children {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 .card-body p {
   font-size: 1.5rem;
   margin-bottom: 60px;
