@@ -32,7 +32,7 @@ function PatientRegistrationForm(props) {
       .then(res => {
         history.push("/patient-login");
 
-        console.log("register Success", res.data.id);
+        console.log("register Success", res.data);
       })
       .catch(err => {
         console.log("Registration FAILED", err);

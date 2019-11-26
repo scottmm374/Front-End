@@ -12,8 +12,10 @@ const LightCard = styled.div`
   padding: 20px;
   min-width: 250px;
   transition: all 0.5s;
+  box-shadow: 0px 5px 10px lightgrey;
   &:hover {
     border: solid 2px #32ddaa;
+    box-shadow: 0px 5px 10px #32ddaa;
   }
 `;
 
@@ -29,6 +31,13 @@ const P = styled.p`
   font-weight: bold;
   color: #777777;
   margin: 5px 0px;
+`;
+
+const NSpan = styled.span`
+  color: #777777;
+  &:hover {
+    color: #32ddaa;
+  }
 `;
 
 const MedProPatientCard = props => {
@@ -48,7 +57,7 @@ const MedProPatientCard = props => {
           }
         }}
       >
-        Click This Link
+        <NSpan> Click This Link</NSpan>
       </Link>
     </LightCard>
   );

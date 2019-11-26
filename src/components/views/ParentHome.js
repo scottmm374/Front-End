@@ -56,8 +56,8 @@ const ParentHome = props => {
       <p>{addPatient.email}</p>
 
       {/* <h1>Welcome to Your Homepage!</h1> */}
-      <div>
-        <h2>Your Children</h2>
+      <h2>Your Children</h2>
+      <div className="children">
         {children.length > 0 ? (
           <ChildCardList children={children} shots={shots} />
         ) : (
