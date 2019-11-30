@@ -26,38 +26,38 @@ function MedicLoginForm({ errors, touched, status }) {
   // console.log("state", medLogin);
 
   return (
-    <LightCard>
+    // <LightCard>
+    <div className="form">
       <Form>
-        <FlexWarp>
+        {/* <FlexWarp>
           <FormContainer>
-            <NewLable>Email</NewLable>
-            {touched.medicEmail && errors.medicEmail && (
-              <p>{errors.medicEmail}</p>
-            )}
-            <Field
-              id="imForm"
-              type="text"
-              name="medicEmail"
-              placeholder="medicEmail"
-            />
-          </FormContainer>
-          <FormContainer>
-            <NewLable>Password</NewLable>
-            {touched.medicPassword && errors.medicPassword && (
-              <p>{errors.medicPassword}</p>
-            )}
-            <Field
-              id="imForm"
-              type="password"
-              name="medicPassword"
-              placeholder="medicPassword"
-            />
-          </FormContainer>
-          <Button type="submit">Login</Button>
-          <h3>New Provider?</h3> <Link to="med-register">Register</Link>
-        </FlexWarp>
+            <NewLable>Email</NewLable> */}
+        {touched.medicEmail && errors.medicEmail && <p>{errors.medicEmail}</p>}
+        <Field
+          id="imForm"
+          type="text"
+          name="medicEmail"
+          placeholder="medicEmail"
+        />
+        {/* </FormContainer>
+          <FormContainer> */}
+        {/* <NewLable>Password</NewLable> */}
+        {touched.medicPassword && errors.medicPassword && (
+          <p>{errors.medicPassword}</p>
+        )}
+        <Field
+          id="imForm"
+          type="password"
+          name="medicPassword"
+          placeholder="medicPassword"
+        />
+        {/* </FormContainer> */}
+        <Button type="submit">Login</Button>
+        {/* <h3>New Provider?</h3> <Link to="med-register">Register</Link> */}
+        {/* </FlexWarp> */}
       </Form>
-    </LightCard>
+    </div>
+    // </LightCard>
   );
 }
 

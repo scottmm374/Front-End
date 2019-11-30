@@ -22,77 +22,62 @@ function MedRegistrationForm({ errors, touched, status }) {
   }, [status]);
 
   return (
-    <LightCard>
+    // <LightCard>
+    <div className="form">
       <Form>
-        <FlexWarp>
+        {/* <FlexWarp>
           <FormContainer>
-            <NewLable> First Name</NewLable>
-            {touched.medicFirstName && errors.medicFirstName && (
-              <p>{errors.medicFirstName}</p>
-            )}
-            <Field
-              id="imForm"
-              type="text"
-              name="medicFirstName"
-              placeholder="First Name"
-            />
+            <NewLable> First Name</NewLable> */}
+        {touched.medicFirstName && errors.medicFirstName && (
+          <p>{errors.medicFirstName}</p>
+        )}
+        <Field
+          id="imForm"
+          type="text"
+          name="medicFirstName"
+          placeholder="First Name"
+        />
 
-            <NewLable> Last Name</NewLable>
-            {touched.medicLastName && errors.medicLastName && (
-              <p>{errors.medicLastName}</p>
-            )}
-            <Field
-              id="imForm"
-              type="text"
-              name="medicLastName"
-              placeholder="Last Name"
-            />
+        {/* <NewLable> Last Name</NewLable> */}
+        {touched.medicLastName && errors.medicLastName && (
+          <p>{errors.medicLastName}</p>
+        )}
+        <Field
+          id="imForm"
+          type="text"
+          name="medicLastName"
+          placeholder="Last Name"
+        />
 
-            <NewLable> Email</NewLable>
-            {touched.medicEmail && errors.medicEmail && (
-              <p>{errors.medicEmail}</p>
-            )}
-            <Field
-              id="imForm"
-              type="text"
-              name="medicEmail"
-              placeholder="Email"
-            />
+        {/* <NewLable> Email</NewLable> */}
+        {touched.medicEmail && errors.medicEmail && <p>{errors.medicEmail}</p>}
+        <Field id="imForm" type="text" name="medicEmail" placeholder="Email" />
 
-            <NewLable>Password</NewLable>
-            {touched.medicPassword && errors.medicPassword && (
-              <p>{errors.medicPassword}</p>
-            )}
-            <Field
-              id="imForm"
-              type="password"
-              name="medicPassword"
-              placeholder="medicPassword"
-            />
-            <NewLable> Company</NewLable>
+        {/* <NewLable>Password</NewLable> */}
+        {touched.medicPassword && errors.medicPassword && (
+          <p>{errors.medicPassword}</p>
+        )}
+        <Field
+          id="imForm"
+          type="password"
+          name="medicPassword"
+          placeholder="medicPassword"
+        />
+        {/* <NewLable> Company</NewLable> */}
 
-            {touched.company && errors.company && <p>{errors.company}</p>}
-            <Field
-              id="imForm"
-              type="text"
-              name="company"
-              placeholder="company"
-            />
+        {touched.company && errors.company && <p>{errors.company}</p>}
+        <Field id="imForm" type="text" name="company" placeholder="company" />
 
-            <NewLable>Postion</NewLable>
-            {touched.position && errors.position && <p>{errors.position}</p>}
-            <Field
-              id="imForm"
-              type="text"
-              name="position"
-              placeholder="position"
-            />
+        {/* <NewLable>Postion</NewLable> */}
+        {touched.position && errors.position && <p>{errors.position}</p>}
+        <Field id="imForm" type="text" name="position" placeholder="position" />
 
-            <Button type="submit">Submit</Button>
-          </FormContainer>
-        </FlexWarp>
+        <Button type="submit">Submit</Button>
+        {/* </FormContainer>
+        </FlexWarp> */}
       </Form>
-    </LightCard>
+    </div>
+    // </LightCard>
   );
 }
 

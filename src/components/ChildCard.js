@@ -12,21 +12,21 @@ const LightCard = styled.div`
   transition: all 0.5s;
   box-shadow: 0px 5px 10px lightgrey;
   &:hover {
-    border: solid 2px #32ddaa;
-    box-shadow: 0px 5px 10px #32ddaa;
+    border: solid 2px #ff9d65;
+    box-shadow: 0px 5px 10px #ff9d65;
   }
 `;
 const H2 = styled.h2`
   font-size: 22px;
   font-weight: bold;
-  color: #333333;
+  color: #ff9d65;
   margin: 5px 0px;
 `;
 
 const P = styled.p`
   font-size: 14px;
   font-weight: bold;
-  color: #777777;
+  color: #ff9d65;
   margin: 5px 0px;
 `;
 const ChildCard = props => {

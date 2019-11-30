@@ -19,6 +19,9 @@ import SinglePatient from "./components/views/SinglePatient.js";
 import { PatientInfoContext } from "./context/PatientInfoContext";
 import { MedInfoContext } from "./context/MedInfoContext";
 import { DrInfoContext } from "./context/DrInfoContext";
+import PatientFormDivider from "./components/views/PatientFormDivider";
+import MedFormDivider from "./components/views/MedFormDivider";
+import ChildrenDivider from "./components/views/ChildrenDivider";
 import { Container } from "reactstrap";
 import "./App.css";
 
@@ -80,14 +83,14 @@ function App() {
               />
 
               <Route
-                path="/patient-login"
-                render={props => <PatientLoginForm {...props} />}
+                path="/patient"
+                render={props => <PatientFormDivider {...props} />}
               />
 
               <Route exact path="/" component={LandingPage} />
               <PatientProtectedRoute
                 path="/patient-home/"
-                component={ParentHome}
+                component={ChildrenDivider}
               />
               <Route
                 path="/child-account/:id"
@@ -101,10 +104,7 @@ function App() {
           </MedInfoContext.Provider>
         </PatientInfoContext.Provider>
 
-        <Route
-          path="/med-login"
-          render={props => <MedicLoginForm {...props} />}
-        />
+        <Route path="/med" render={props => <MedFormDivider {...props} />} />
         <MedProtectedRoute exact path="/med-logout" component={MedLogout} />
         <Route
           path="/med-register"

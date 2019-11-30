@@ -3,13 +3,30 @@ import React, { useState } from "react";
 import history from "../../history";
 import * as yup from "yup";
 import api from "../utils/api";
+import styled from "styled-components";
 import {
-  Button,
-  LightCard,
-  NewLable,
-  FormContainer,
-  FlexWarp
+  // LightCard,
+  NewLable
+  // FormContainer,
+  // FlexWarp
 } from "../utils/styledComponents.js";
+
+export const Button = styled.button`
+  background: #ff9d65;
+  color: #ffffff;
+  &:hover {
+    background: #ffb286;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+  }
+  border-radius: 4px;
+  border: none;
+  margin: auto 15px;
+  padding: 14px 25px;
+  font-weight: bold;
+  font-size: 16px;
+  max-height: 50px;
+`;
 
 function PatientRegistrationForm(props) {
   const [patientReg, setPatientReg] = useState({
@@ -17,6 +34,25 @@ function PatientRegistrationForm(props) {
     userPassword: "",
     userName: ""
   });
+
+  // const validationScheme = yup.object().shape({
+  //   userName: yup
+  //     .string()
+  //     .matches(
+  //       /^[\w]+$/,
+  //       "Your username may only contain letters, numbers, and underscore. "
+  //     )
+  //     .min(3, "UserName must be at least characters")
+  //     .required("Please enter your name"),
+  //   userEmail: yup
+  //     .string()
+  //     .email()
+  //     .required("Please enter valid email"),
+  //   userPassword: yup
+  //     .string()
+  //     .min(6, "Your password must be at least 6 characters")
+  //     .required("Please enter a password")
+  // })
 
   const handleChange = e => {
     setPatientReg({
@@ -40,50 +76,47 @@ function PatientRegistrationForm(props) {
   };
 
   return (
-    <LightCard>
+    <div className="form">
       <form onSubmit={handleSubmit}>
-        <FlexWarp>
-          <FormContainer>
-            <NewLable> Full Name</NewLable>
-            <input
-              id="imForm"
-              type="text"
-              name="userName"
-              placeholder="Full Name"
-              required
-              value={patientReg.userName}
-              onChange={handleChange}
-            />
+        <h3>Sign Up</h3>
+        {/* <NewLable> Full Name</NewLable> */}
+        <input
+          id="imForm"
+          type="text"
+          name="userName"
+          placeholder="Full Name"
+          required
+          value={patientReg.userName}
+          onChange={handleChange}
+        />
 
-            <NewLable>Email</NewLable>
+        {/* <NewLable>Email</NewLable> */}
 
-            <input
-              id="imForm"
-              type="email"
-              name="userEmail"
-              placeholder="Email"
-              required
-              value={patientReg.userEmail}
-              onChange={handleChange}
-            />
+        <input
+          id="imForm"
+          type="email"
+          name="userEmail"
+          placeholder="Email"
+          required
+          value={patientReg.userEmail}
+          onChange={handleChange}
+        />
 
-            <NewLable>Password</NewLable>
+        {/* <NewLable>Password</NewLable> */}
 
-            <input
-              id="imForm"
-              type="password"
-              name="userPassword"
-              placeholder="Password"
-              required
-              value={patientReg.userPassword}
-              onChange={handleChange}
-            />
+        <input
+          id="imForm"
+          type="password"
+          name="userPassword"
+          placeholder="Password"
+          required
+          value={patientReg.userPassword}
+          onChange={handleChange}
+        />
 
-            <Button type="submit">Submit</Button>
-          </FormContainer>
-        </FlexWarp>
+        <Button type="submit">Submit</Button>
       </form>
-    </LightCard>
+    </div>
   );
 }
 
@@ -103,9 +136,13 @@ export default PatientRegistrationForm;
 
 //   return (
 //     <LightCard>
-//       <Form>
-//         <FlexWarp>
-//           <FormContainer>
+// //       <Form>
+{
+  /* //         <FlexWarp> */
+}
+{
+  /* //           <FormContainer> */
+}
 //             <NewLable> Full Name</NewLable>
 //
 //             <input
@@ -138,7 +175,7 @@ export default PatientRegistrationForm;
 //             <Button type="submit">Submit</Button>
 //           </FormContainer>
 //         </FlexWarp>
-//       </Form>
+// //       </Form>
 //     </LightCard>
 //   );
 // }

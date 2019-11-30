@@ -14,10 +14,13 @@ import {
 
 const NewLogo = styled.img`
   border: none;
-  &:hover {
-    border: 1px solid #32ddaa;
-    padding: 3px;
+  &:hover: {
+    transparency: 50%;
   }
+`;
+
+const NewNav = styled(Nav)`
+  background: FF9D65;
 `;
 
 const Navigation = () => {
@@ -31,7 +34,7 @@ const Navigation = () => {
           <NewLogo src={Logo} alt="im logo" />
         </NavbarBrand>
 
-        <Nav className="mr-auto" navbar>
+        <NewNav className="mr-auto" navbar>
           <NavItem>
             {MedSignedIn && <NavLink href="/med-account">Med Account</NavLink>}
           </NavItem>
@@ -48,7 +51,7 @@ const Navigation = () => {
               <NavLink href="/patient-logout">Patient Logout</NavLink>
             )}
           </NavItem>
-        </Nav>
+        </NewNav>
         <NavLink
           className="nav-link"
           href="https://deploy-preview-3--im-record-shawn.netlify.com/"

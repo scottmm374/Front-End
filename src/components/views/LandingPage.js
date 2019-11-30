@@ -6,12 +6,29 @@ import HeaderImg from "../../images/image.jpg";
 import { Card, CardText, CardBody } from "reactstrap";
 import styled from "styled-components";
 
+export const ButtonPatient = styled.button`
+  background: #ff9d65;
+  color: #ffffff;
+  &:hover {
+    background: #ffb286;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+  }
+  border-radius: 4px;
+  border: none;
+  margin: auto 15px;
+  padding: 14px 25px;
+  font-weight: bold;
+  font-size: 16px;
+  max-height: 50px;
+`;
+
 function LandingPage() {
   return (
     <Container>
-      <Jumbotron>
+      {/* <Jumbotron>
         <img src={HeaderImg} alt="Man with baby" />
-      </Jumbotron>
+      </Jumbotron> */}
 
       <Card>
         <CardBody>
@@ -28,10 +45,10 @@ function LandingPage() {
             </p>
           </CardText>
           <h1>Choose your role.</h1>
-          <Link to="/patient-login">
-            <Button>Patient</Button>
+          <Link to="/patient">
+            <ButtonPatient>Patient</ButtonPatient>
           </Link>
-          <Link to="/med-login">
+          <Link to="/med">
             <Button>Provider</Button>
           </Link>
         </CardBody>

@@ -2,13 +2,43 @@
 html {
   background: #fafafa;
 }
+
+/* to use for fonts. 
+.placeholder {
+  font-family: "Ruda", sans-serif;
+  font-size: 48px;
+
+  font-family: "Roboto Slab", serif;
+  font-size: 16px;
+} */
 #imForm {
-  border: solid 1px #bdbdbd;
+  border: none;
+  border-bottom-color: currentcolor;
+  border-bottom-style: none;
+  border-bottom-width: medium;
+  border-bottom: 1px solid #ff9d65;
+  margin-bottom: 17px;
+  /* border: solid 1px #bdbdbd;
   border-radius: 4px;
-  padding: 15px 10px;
+  padding: 15px 10px; */
   font-size: 14px;
   font-weight: bold;
   color: #333333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Ruda", sans-serif;
+  font-size: 48px;
+}
+
+p {
+  font-family: "Roboto Slab", serif;
+  font-size: 16px;
 }
 
 .App {
@@ -34,6 +64,18 @@ html {
   color: #09d3ac;
 }
 
+/* .sc-bwzfXH {
+  max-width: 30%;
+  margin-left: 25%;
+  margin-bottom: 15%;
+
+  box-shadow: lightgrey;
+
+  box-shadow: 6px 14px 13px lightgray;
+
+  border: none;
+} */
+
 img {
   max-width: 100%;
   max-height: 25%;
@@ -45,6 +87,7 @@ nav {
 
 .nav-link {
   color: rgba(0, 0, 0, 0.5);
+  font-family: "Roboto Slab", serif;
 }
 
 .children {
@@ -57,9 +100,22 @@ nav {
   margin-bottom: 60px;
 }
 
+/* .card-body {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 157, 101, 1) 13%,
+    rgba(255, 195, 101, 1) 73%,
+    rgba(255, 238, 212, 1) 100%
+  );
+} */
+
 .id {
   font-size: 2rem;
   color: #32ddaa;
+}
+
+.patient {
+  color: #ff9d65;
 }
 .titles {
   /* color: #32ddaa; */
@@ -68,11 +124,37 @@ nav {
 }
 
 th {
+  border-bottom: 1px solid #ff9d65;
   padding: 10px 50px;
   text-align: left;
   transition: 0.5s;
+  font-family: "Roboto Slab", serif;
+}
+
+thead {
+  font-size: 20px;
+  background: antiquewhite;
 }
 
 tr {
   padding: 10px 15px;
+  font-family: "Roboto Slab", serif;
+}
+
+table {
+  justify-content: center;
+}
+
+.sc-bwzfXH {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.form {
+  max-width: 50%;
+  display: flex;
+  position: relative;
+  align-content: center;
+  margin-left: 147px;
 }

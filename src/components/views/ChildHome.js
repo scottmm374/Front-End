@@ -29,22 +29,22 @@ const ChildHome = props => {
           <CardTitle>
             <h1>
               {child.firstName} {child.lastName}{" "}
-              <p className="id">ID: {child.id}</p>
+              <p className="patient">ID: {child.id}</p>
             </h1>
           </CardTitle>
           <CardBody>
             <Row>
               <Col>
                 <h3>Gender</h3>
-                <p className="id">{child.gender}</p>
+                <p className="patient">{child.gender}</p>
                 <h3>Age</h3>
-                <p className="id">{child.age}</p>
+                <p className="patient">{child.age}</p>
               </Col>
               <Col>
                 <h3>Weight</h3>
-                <p className="id">{child.weight}</p>
+                <p className="patient">{child.weight}</p>
                 <h3>Height</h3>
-                <p className="id">{child.height}</p>
+                <p className="patient">{child.height}</p>
               </Col>
             </Row>
 
@@ -56,7 +56,7 @@ const ChildHome = props => {
         <DeleteUser id={props.match.params.id} />
       </LightCard>
       <LightCard>
-        <h2>Immunization History</h2>
+        {/* <h2>Immunization History</h2> */}
         <HistoryCard shots={shots} />
       </LightCard>
       <PermissionForm />

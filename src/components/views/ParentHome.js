@@ -52,11 +52,11 @@ const ParentHome = props => {
 
   return (
     <>
-      <h1>{addPatient.message}</h1>
-      <p>{addPatient.email}</p>
+      {/* <h1 className="patient">{addPatient.message}</h1>
+      <p>{addPatient.email}</p> */}
 
       {/* <h1>Welcome to Your Homepage!</h1> */}
-      <h2>Your Children</h2>
+      <h2 className="patient">Your Children</h2>
       <div className="children">
         {children.length > 0 ? (
           <ChildCardList children={children} shots={shots} />
@@ -64,7 +64,7 @@ const ParentHome = props => {
           <div>No Children</div>
         )}
       </div>
-      <div>
+      {/* <div>
         <h2>Add Child</h2>
         <LightCard>
           <AddChild
@@ -77,7 +77,7 @@ const ParentHome = props => {
             userId={localStorage.id}
           />
         </LightCard>
-      </div>
+      </div> */}
     </>
   );
 };
