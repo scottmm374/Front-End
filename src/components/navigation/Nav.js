@@ -1,7 +1,7 @@
 import React from "react";
 import { getMedToken } from "../utils/medApi";
 import { getToken } from "../utils/api";
-import Logo from "../../images/Logo.svg";
+import Logo from "../../images/IM-Records.png";
 import styled from "styled-components";
 import {
   Navbar,
@@ -14,13 +14,19 @@ import {
 
 const NewLogo = styled.img`
   border: none;
-  &:hover: {
-    transparency: 50%;
-  }
+  max-width: 45%;
 `;
 
-const NewNav = styled(Nav)`
-  background: FF9D65;
+const NLinks = styled(NavItem)`
+  font-size: 1.5rem;
+`;
+
+const NewNav = styled(Navbar)`
+  // position: fixed;
+  z-index: 1;
+  margin-bottom: 80px;
+  background: white;
+  box-shadow: 1px 5px 8px lightgrey;
 `;
 
 const Navigation = () => {
@@ -29,36 +35,49 @@ const Navigation = () => {
 
   return (
     <Container fluid>
-      <Navbar color="light" light expand="lg">
+      <NewNav light expand="lg">
         <NavbarBrand href="/">
           <NewLogo src={Logo} alt="im logo" />
         </NavbarBrand>
 
-        <NewNav className="mr-auto" navbar>
-          <NavItem>
-            {MedSignedIn && <NavLink href="/med-account">Med Account</NavLink>}
-          </NavItem>
-          <NavItem>
+        <Nav className="mr-auto" navbar>
+          <NLinks>
+            <NavLink href="/">Home</NavLink>
+          </NLinks>
+
+          <NLinks className="provider-link">
+            <NavLink href="/med">Provider</NavLink>
+          </NLinks>
+          <NLinks className="patient-link">
+            <NavLink href="/patient">Patient</NavLink>
+          </NLinks>
+          {/* <NLinks>
             {MedSignedIn && <NavLink href="/med-logout">Med Logout</NavLink>}
-          </NavItem>
-          <NavItem>
+          </NLinks> */}
+          <NLinks>
             {PatientSignedIn && (
-              <NavLink href="/patient-home">Patient Account</NavLink>
+              <NavLink href="/patient-home">Patient Home</NavLink>
             )}
-          </NavItem>
-          <NavItem>
+          </NLinks>
+          <NLinks>
+            {MedSignedIn && <NavLink href="/med-account">Med Home</NavLink>}
+          </NLinks>
+          <NLinks>
             {PatientSignedIn && (
-              <NavLink href="/patient-logout">Patient Logout</NavLink>
+              <NavLink href="/Patient-logout">Logout</NavLink>
             )}
-          </NavItem>
-        </NewNav>
-        <NavLink
+          </NLinks>
+          <NLinks>
+            {MedSignedIn && <NavLink href="/Med-logout">Logout</NavLink>}
+          </NLinks>
+        </Nav>
+        {/* <NavLink
           className="nav-link"
           href="https://deploy-preview-3--im-record-shawn.netlify.com/"
         >
           Learn More
-        </NavLink>
-      </Navbar>
+        </NavLink> */}
+      </NewNav>
     </Container>
   );
 };

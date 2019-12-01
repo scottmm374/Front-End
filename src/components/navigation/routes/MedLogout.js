@@ -6,7 +6,7 @@ function MedLogout(props) {
   localStorage.removeItem("id");
   localStorage.removeItem("message");
 
-  return <Redirect to="/med-login" />;
+  return <Redirect to="/" />;
 }
 
 export default MedLogout;
