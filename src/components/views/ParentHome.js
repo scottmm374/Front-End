@@ -4,6 +4,17 @@ import ChildCardList from "../ChildCardList";
 import { PatientInfoContext } from "../../context/PatientInfoContext";
 import api from "../utils/api";
 import { LightCard } from "../utils/styledComponents.js";
+import { Container, Row, Col } from "reactstrap";
+import styled from "styled-components";
+import RevealAddChild from "../views/RevealAddChild";
+// import Children from "../../images/children.svg";
+
+const NewCont = styled(Container)`
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 1px 5px 8px lightgrey;
+`;
 
 const ParentHome = props => {
   const addPatient = useContext(PatientInfoContext);
@@ -51,23 +62,35 @@ const ParentHome = props => {
   if (!children || shots.length < children.length) return <h4>Loading...</h4>;
 
   return (
-    <>
-      {/* <h1 className="patient">{addPatient.message}</h1>
-      <p>{addPatient.email}</p> */}
-
-      {/* <h1>Welcome to Your Homepage!</h1> */}
-      <h2 className="patient">Your Children</h2>
-      <div className="children">
-        {children.length > 0 ? (
-          <ChildCardList children={children} shots={shots} />
-        ) : (
-          <div>No Children</div>
-        )}
-      </div>
-      {/* <div>
-        <h2>Add Child</h2>
-        <LightCard>
-          <AddChild
+    <NewCont>
+      <Row>
+        <Col lg="12">
+          <h1 className="patient">{addPatient.message}</h1>
+          <p>{addPatient.email}</p>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg="6">
+          <h2 className="patient">Your Children</h2>
+        </Col>
+        <Col lg="6">
+          <h2 className="patient">Add Child</h2>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg="6">
+          <div className="children">
+            {children.length > 0 ? (
+              <ChildCardList children={children} shots={shots} />
+            ) : (
+              <div>No Children</div>
+            )}
+          </div>
+        </Col>
+        <Col lg="6">
+          {/* <img src={Children} alt="children" /> */}
+          <RevealAddChild />
+          {/* <AddChild
             setRefresh={setRefresh}
             patientEmail={
               localStorage.patientEmail
@@ -75,10 +98,10 @@ const ParentHome = props => {
                 : "err@err.com"
             }
             userId={localStorage.id}
-          />
-        </LightCard>
-      </div> */}
-    </>
+          /> */}
+        </Col>
+      </Row>
+    </NewCont>
   );
 };
 

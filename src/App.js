@@ -21,7 +21,8 @@ import { MedInfoContext } from "./context/MedInfoContext";
 import { DrInfoContext } from "./context/DrInfoContext";
 import PatientFormDivider from "./components/views/PatientFormDivider";
 import MedFormDivider from "./components/views/MedFormDivider";
-import ChildrenDivider from "./components/views/ChildrenDivider";
+import Footer from "./components/views/Footer";
+// import ChildrenDivider from "./components/views/ChildrenDivider";
 import { Container } from "reactstrap";
 import "./App.css";
 
@@ -90,7 +91,7 @@ function App() {
               <Route exact path="/" component={LandingPage} />
               <PatientProtectedRoute
                 path="/patient-home/"
-                component={ChildrenDivider}
+                component={ParentHome}
               />
               <Route
                 path="/child-account/:id"
@@ -120,6 +121,7 @@ function App() {
           path="/patient-logout"
           component={PatientLogout}
         />
+        <Footer />
       </div>
     </Container>
   );

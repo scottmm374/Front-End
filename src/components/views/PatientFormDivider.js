@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Divider, Form, Grid, Segment } from "semantic-ui-react";
 import PatientRegistrationForm from "../forms/PatientRegistrationForm";
 import PatientLoginForm from "../forms/PatientLoginForm";
+import PatientRegToggle from "./PatientRegToggle";
 
 const PatientFormDivider = () => (
   <Segment placeholder>
@@ -13,7 +14,7 @@ const PatientFormDivider = () => (
       </Grid.Column>
 
       <Grid.Column verticalAlign="middle">
-        <PatientRegistrationForm />
+        <PatientRegToggle />
         {/* <Button content="Sign up" icon="signup" size="big" /> */}
       </Grid.Column>
     </Grid>

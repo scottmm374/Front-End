@@ -12,8 +12,8 @@ const LightCard = styled.div`
   transition: all 0.5s;
   box-shadow: 0px 5px 10px lightgrey;
   &:hover {
-    border: solid 2px #ff9d65;
-    box-shadow: 0px 5px 10px #ff9d65;
+    border: solid 2px #ffcfb4;
+    box-shadow: 0px 8px 10px #ffcfb4;
   }
 `;
 const H2 = styled.h2`
@@ -46,6 +46,7 @@ const ChildCard = props => {
       >
         <H2>
           {props.child.firstName} {props.child.lastName}
+          <p>Age- {props.child.age}</p>
         </H2>
       </Link>
     </LightCard>

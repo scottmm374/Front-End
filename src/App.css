@@ -1,6 +1,6 @@
 #root,
 html {
-  background: #fafafa;
+  background: #eeeded;
 }
 
 /* to use for fonts. 
@@ -13,14 +13,14 @@ html {
 } */
 #imForm {
   border: none;
-  border-bottom-color: currentcolor;
+  /* border-bottom-color: currentcolor;
   border-bottom-style: none;
-  border-bottom-width: medium;
+  border-bottom-width: medium; */
   border-bottom: 1px solid #ff9d65;
   margin-bottom: 17px;
   /* border: solid 1px #bdbdbd;
   border-radius: 4px;
-  padding: 15px 10px; */
+  /* padding: 15px 10px; */
   font-size: 14px;
   font-weight: bold;
   color: #333333;
@@ -43,6 +43,13 @@ p {
 
 .App {
   text-align: center;
+  /* background: #eeeded; */
+  /* background: linear-gradient(
+    180deg,
+    rgba(255, 157, 101, 0.4834266470259979) 13%,
+    rgba(255, 195, 101, 0.4834266470259979) 73%,
+    rgba(255, 238, 212, 0.6318860307794993) 100%
+  ); */
 }
 
 .App-logo {
@@ -60,9 +67,14 @@ p {
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.footer {
+  margin-top: 5%;
+  padding: 40px;
 }
+
+/* .App-link {
+  color: #09d3ac;
+} */
 
 /* .sc-bwzfXH {
   max-width: 30%;
@@ -78,28 +90,47 @@ p {
 
 img {
   max-width: 100%;
-  max-height: 25%;
+  max-height: 100%;
 }
-nav {
+/* nav {
   /* box-shadow: 0px -2px 22px; */
-  margin-bottom: 4.5rem;
-}
+/* margin-bottom: 4.5rem; */
+/* } */
 
-.nav-link {
+/* .nav-link {
   color: rgba(0, 0, 0, 0.5);
   font-family: "Roboto Slab", serif;
-}
+} */
 
 .children {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .card-body p {
   font-size: 1.5rem;
   margin-bottom: 60px;
 }
 
+/* .container {
+  max-width: 95%;
+} */
+.provider-link {
+  color: #32ddaa;
+}
+
+.patient-link {
+  color: #ff9d65;
+}
+
+.form-cont {
+  display: flex;
+  justify-content: center;
+}
+
+.col-lg-6 {
+  margin-top: 8%;
+}
 /* .card-body {
   background: linear-gradient(
     180deg,
@@ -151,10 +182,10 @@ table {
   padding: 20px;
 }
 
-.form {
+/* .form {
   max-width: 50%;
   display: flex;
   position: relative;
   align-content: center;
   margin-left: 147px;
-}
+} */

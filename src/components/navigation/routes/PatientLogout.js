@@ -5,14 +5,13 @@ import { Redirect } from "react-router-dom";
 
 function PatientLogout(props) {
   localStorage.removeItem("token");
-
   localStorage.removeItem("patientEmail");
   localStorage.removeItem("id");
   localStorage.removeItem("message");
   localStorage.removeItem("userEmail");
   localStorage.removeItem("userName");
 
-  return <Redirect to="/patient-login" />;
+  return <Redirect to="/" />;
 }
 
 export default PatientLogout;
