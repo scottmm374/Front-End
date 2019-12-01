@@ -4,12 +4,14 @@ import history from "../../history";
 import { Link } from "react-router-dom";
 import api from "../utils/api";
 import styled from "styled-components";
-import {
-  // LightCard,
-  NewLable
-  // FormContainer,
-  // FlexWarp
-} from "../utils/styledComponents.js";
+
+const NForm = styled.form`
+  margin-top: 35px;
+  display: flex;
+  max-width: 65%;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 export const Button = styled.button`
   background: #ff9d65;
@@ -60,8 +62,8 @@ function PatientLoginForm(props) {
 
   // console.log("message", message);
   return (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
+    <div className="form-cont">
+      <NForm onSubmit={handleSubmit}>
         <h3>Login</h3>
         {/* <FlexWarp> */}
         {/* <FormContainer> */}
@@ -87,7 +89,7 @@ function PatientLoginForm(props) {
         {/* <h3>New Patient?</h3> <Link to="patient-register">Register</Link> */}
         {/* </FormContainer> */}
         {/* </FlexWarp> */}
-      </form>
+      </NForm>
     </div>
   );
 }

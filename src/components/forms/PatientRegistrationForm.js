@@ -4,12 +4,14 @@ import history from "../../history";
 import * as yup from "yup";
 import api from "../utils/api";
 import styled from "styled-components";
-import {
-  // LightCard,
-  NewLable
-  // FormContainer,
-  // FlexWarp
-} from "../utils/styledComponents.js";
+
+const NForm = styled.form`
+  margin-top: 35px;
+  display: flex;
+  max-width: 65%;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 export const Button = styled.button`
   background: #ff9d65;
@@ -76,8 +78,8 @@ function PatientRegistrationForm(props) {
   };
 
   return (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
+    <div className="form-cont">
+      <NForm onSubmit={handleSubmit}>
         <h3>Sign Up</h3>
         {/* <NewLable> Full Name</NewLable> */}
         <input
@@ -115,7 +117,7 @@ function PatientRegistrationForm(props) {
         />
 
         <Button type="submit">Submit</Button>
-      </form>
+      </NForm>
     </div>
   );
 }

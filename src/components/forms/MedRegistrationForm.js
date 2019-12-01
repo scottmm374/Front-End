@@ -3,6 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import history from "../../history";
 import * as yup from "yup";
 import medApi from "../utils/medApi";
+import styled from "styled-components";
 import {
   Button,
   LightCard,
@@ -10,6 +11,14 @@ import {
   FormContainer,
   FlexWarp
 } from "../utils/styledComponents.js";
+
+const NForm = styled(Form)`
+  margin-top: 35px;
+  display: flex;
+  max-width: 65%;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 function MedRegistrationForm({ errors, touched, status }) {
   const [medReg, setMedReg] = useState([]);
@@ -23,8 +32,8 @@ function MedRegistrationForm({ errors, touched, status }) {
 
   return (
     // <LightCard>
-    <div className="form">
-      <Form>
+    <div className="form-cont">
+      <NForm>
         {/* <FlexWarp>
           <FormContainer>
             <NewLable> First Name</NewLable> */}
@@ -75,7 +84,7 @@ function MedRegistrationForm({ errors, touched, status }) {
         <Button type="submit">Submit</Button>
         {/* </FormContainer>
         </FlexWarp> */}
-      </Form>
+      </NForm>
     </div>
     // </LightCard>
   );

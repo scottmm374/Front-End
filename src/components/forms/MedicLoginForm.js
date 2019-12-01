@@ -4,13 +4,33 @@ import history from "../../history";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import medApi from "../utils/medApi";
-import {
-  LightCard,
-  FlexWarp,
-  Button,
-  FormContainer,
-  NewLable
-} from "../utils/styledComponents";
+import styled from "styled-components";
+import { Button } from "../utils/styledComponents";
+
+// export const Button = styled.button`
+//   background: #ff9d65;
+//   color: #ffffff;
+//   &:hover {
+//     background: #ffb286;
+//     border: 1px solid #ffffff;
+//     color: #ffffff;
+//   }
+//   border-radius: 4px;
+//   border: none;
+//   margin-top: 21px;
+//   padding: 14px 25px;
+//   font-weight: bold;
+//   font-size: 16px;
+//   max-height: 50px;
+// `;
+
+const NForm = styled(Form)`
+  margin-top: 35px;
+  display: flex;
+  max-width: 65%;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 function MedicLoginForm({ errors, touched, status }) {
   const [medLogin, setMedLogin] = useState([]);
@@ -27,8 +47,8 @@ function MedicLoginForm({ errors, touched, status }) {
 
   return (
     // <LightCard>
-    <div className="form">
-      <Form>
+    <div className="form-cont">
+      <NForm>
         {/* <FlexWarp>
           <FormContainer>
             <NewLable>Email</NewLable> */}
@@ -55,7 +75,7 @@ function MedicLoginForm({ errors, touched, status }) {
         <Button type="submit">Login</Button>
         {/* <h3>New Provider?</h3> <Link to="med-register">Register</Link> */}
         {/* </FlexWarp> */}
-      </Form>
+      </NForm>
     </div>
     // </LightCard>
   );
