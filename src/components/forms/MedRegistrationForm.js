@@ -4,13 +4,7 @@ import history from "../../history";
 import * as yup from "yup";
 import medApi from "../utils/medApi";
 import styled from "styled-components";
-import {
-  Button,
-  LightCard,
-  NewLable,
-  FormContainer,
-  FlexWarp
-} from "../utils/styledComponents.js";
+import { Button } from "../utils/styledComponents.js";
 
 const NForm = styled(Form)`
   margin-top: 35px;
@@ -18,6 +12,13 @@ const NForm = styled(Form)`
   max-width: 65%;
   justify-content: center;
   flex-direction: column;
+`;
+
+const NewField = styled(Field)`
+  background: white;
+  &:hover {
+    background: #e1f5ee;
+  }
 `;
 
 function MedRegistrationForm({ errors, touched, status }) {
@@ -40,8 +41,8 @@ function MedRegistrationForm({ errors, touched, status }) {
         {touched.medicFirstName && errors.medicFirstName && (
           <p>{errors.medicFirstName}</p>
         )}
-        <Field
-          id="imForm"
+        <NewField
+          className="med-Form"
           type="text"
           name="medicFirstName"
           placeholder="First Name"
@@ -51,8 +52,8 @@ function MedRegistrationForm({ errors, touched, status }) {
         {touched.medicLastName && errors.medicLastName && (
           <p>{errors.medicLastName}</p>
         )}
-        <Field
-          id="imForm"
+        <NewField
+          className="med-Form"
           type="text"
           name="medicLastName"
           placeholder="Last Name"
@@ -60,26 +61,41 @@ function MedRegistrationForm({ errors, touched, status }) {
 
         {/* <NewLable> Email</NewLable> */}
         {touched.medicEmail && errors.medicEmail && <p>{errors.medicEmail}</p>}
-        <Field id="imForm" type="text" name="medicEmail" placeholder="Email" />
+        <NewField
+          className="med-Form"
+          type="text"
+          name="medicEmail"
+          placeholder="Email"
+        />
 
         {/* <NewLable>Password</NewLable> */}
         {touched.medicPassword && errors.medicPassword && (
           <p>{errors.medicPassword}</p>
         )}
-        <Field
-          id="imForm"
+        <NewField
+          className="med-Form"
           type="password"
           name="medicPassword"
-          placeholder="medicPassword"
+          placeholder="Password"
         />
         {/* <NewLable> Company</NewLable> */}
 
         {touched.company && errors.company && <p>{errors.company}</p>}
-        <Field id="imForm" type="text" name="company" placeholder="company" />
+        <NewField
+          className="med-Form"
+          type="text"
+          name="company"
+          placeholder="Company"
+        />
 
         {/* <NewLable>Postion</NewLable> */}
         {touched.position && errors.position && <p>{errors.position}</p>}
-        <Field id="imForm" type="text" name="position" placeholder="position" />
+        <NewField
+          className="med-Form"
+          type="text"
+          name="position"
+          placeholder="Position"
+        />
 
         <Button type="submit">Submit</Button>
         {/* </FormContainer>

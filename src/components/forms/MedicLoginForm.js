@@ -32,6 +32,13 @@ const NForm = styled(Form)`
   flex-direction: column;
 `;
 
+const NewField = styled(Field)`
+  background: white;
+  &:hover {
+    background: #e1f5ee;
+  }
+`;
+
 function MedicLoginForm({ errors, touched, status }) {
   const [medLogin, setMedLogin] = useState([]);
 
@@ -53,11 +60,11 @@ function MedicLoginForm({ errors, touched, status }) {
           <FormContainer>
             <NewLable>Email</NewLable> */}
         {touched.medicEmail && errors.medicEmail && <p>{errors.medicEmail}</p>}
-        <Field
-          id="imForm"
+        <NewField
+          className="med-Form"
           type="text"
           name="medicEmail"
-          placeholder="medicEmail"
+          placeholder="Email"
         />
         {/* </FormContainer>
           <FormContainer> */}
@@ -65,11 +72,11 @@ function MedicLoginForm({ errors, touched, status }) {
         {touched.medicPassword && errors.medicPassword && (
           <p>{errors.medicPassword}</p>
         )}
-        <Field
-          id="imForm"
+        <NewField
+          className="med-Form"
           type="password"
           name="medicPassword"
-          placeholder="medicPassword"
+          placeholder="Password"
         />
         {/* </FormContainer> */}
         <Button type="submit">Login</Button>

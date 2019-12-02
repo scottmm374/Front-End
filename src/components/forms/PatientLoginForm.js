@@ -8,17 +8,23 @@ import styled from "styled-components";
 const NForm = styled.form`
   margin-top: 35px;
   display: flex;
-  max-width: 65%;
+  max-wclassnameth: 65%;
   justify-content: center;
   flex-direction: column;
 `;
 
+const NewInput = styled.input`
+  background: white;
+  &:hover {
+    background: #fdebe1;
+  }
+`;
 export const Button = styled.button`
   background: #ff9d65;
   color: #ffffff;
   &:hover {
     background: #ffb286;
-    border: 1px solid #ffffff;
+    border: 1px solclassName #ffffff;
     color: #ffffff;
   }
   border-radius: 4px;
@@ -68,8 +74,8 @@ function PatientLoginForm(props) {
         {/* <FlexWarp> */}
         {/* <FormContainer> */}
         {/* <NewLable>Email</NewLable> */}
-        <input
-          id="imForm"
+        <NewInput
+          className="patient-Form"
           type="text"
           name="userEmail"
           value={patientLogin.userEmail}
@@ -77,8 +83,8 @@ function PatientLoginForm(props) {
           onChange={handleChange}
         />
         {/* <NewLable>Password</NewLable> */}
-        <input
-          id="imForm"
+        <NewInput
+          className="patient-Form"
           type="password"
           name="userPassword"
           placeholder="Password"

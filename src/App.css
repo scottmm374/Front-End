@@ -11,16 +11,19 @@ html {
   font-family: "Roboto Slab", serif;
   font-size: 16px;
 } */
-#imForm {
+.patient-Form {
   border: none;
-  /* border-bottom-color: currentcolor;
-  border-bottom-style: none;
-  border-bottom-width: medium; */
   border-bottom: 1px solid #ff9d65;
   margin-bottom: 17px;
-  /* border: solid 1px #bdbdbd;
-  border-radius: 4px;
-  /* padding: 15px 10px; */
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.med-Form {
+  border: none;
+  border-bottom: 1px solid #32ddaa;
+  margin-bottom: 17px;
   font-size: 14px;
   font-weight: bold;
   color: #333333;
@@ -43,20 +46,9 @@ p {
 
 .App {
   text-align: center;
-  /* background: #eeeded; */
-  /* background: linear-gradient(
-    180deg,
-    rgba(255, 157, 101, 0.4834266470259979) 13%,
-    rgba(255, 195, 101, 0.4834266470259979) 73%,
-    rgba(255, 238, 212, 0.6318860307794993) 100%
-  ); */
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -65,11 +57,12 @@ p {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .footer {
   margin-top: 5%;
-  padding: 40px;
+  padding: 20px 10px 5px 10px;
+  background: white;
 }
 
 /* .App-link {
@@ -107,30 +100,32 @@ img {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-.card-body p {
+
+/* .card-body p {
   font-size: 1.5rem;
   margin-bottom: 60px;
-}
+} */
 
 /* .container {
   max-width: 95%;
 } */
-.provider-link {
+/* .provider-link {
   color: #32ddaa;
 }
 
 .patient-link {
   color: #ff9d65;
-}
+} */
 
 .form-cont {
   display: flex;
   justify-content: center;
+  padding: 10px;
 }
 
-.col-lg-6 {
+/* .col-lg-6 {
   margin-top: 8%;
-}
+} */
 /* .card-body {
   background: linear-gradient(
     180deg,

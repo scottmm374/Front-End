@@ -8,9 +8,16 @@ import styled from "styled-components";
 const NForm = styled.form`
   margin-top: 35px;
   display: flex;
-  max-width: 65%;
+  max-wclassnameth: 65%;
   justify-content: center;
   flex-direction: column;
+`;
+
+const NewInput = styled.input`
+  background: white;
+  &:hover {
+    background: #fdebe1;
+  }
 `;
 
 export const Button = styled.button`
@@ -18,7 +25,7 @@ export const Button = styled.button`
   color: #ffffff;
   &:hover {
     background: #ffb286;
-    border: 1px solid #ffffff;
+    border: 1px solclassName #ffffff;
     color: #ffffff;
   }
   border-radius: 4px;
@@ -37,7 +44,7 @@ function PatientRegistrationForm(props) {
     userName: ""
   });
 
-  // const validationScheme = yup.object().shape({
+  // const valclassNameationScheme = yup.object().shape({
   //   userName: yup
   //     .string()
   //     .matches(
@@ -49,7 +56,7 @@ function PatientRegistrationForm(props) {
   //   userEmail: yup
   //     .string()
   //     .email()
-  //     .required("Please enter valid email"),
+  //     .required("Please enter valclassName email"),
   //   userPassword: yup
   //     .string()
   //     .min(6, "Your password must be at least 6 characters")
@@ -82,8 +89,8 @@ function PatientRegistrationForm(props) {
       <NForm onSubmit={handleSubmit}>
         <h3>Sign Up</h3>
         {/* <NewLable> Full Name</NewLable> */}
-        <input
-          id="imForm"
+        <NewInput
+          className="patient-Form"
           type="text"
           name="userName"
           placeholder="Full Name"
@@ -94,8 +101,8 @@ function PatientRegistrationForm(props) {
 
         {/* <NewLable>Email</NewLable> */}
 
-        <input
-          id="imForm"
+        <NewInput
+          className="patient-Form"
           type="email"
           name="userEmail"
           placeholder="Email"
@@ -106,8 +113,8 @@ function PatientRegistrationForm(props) {
 
         {/* <NewLable>Password</NewLable> */}
 
-        <input
-          id="imForm"
+        <NewInput
+          className="patient-Form"
           type="password"
           name="userPassword"
           placeholder="Password"
@@ -148,7 +155,7 @@ export default PatientRegistrationForm;
 //             <NewLable> Full Name</NewLable>
 //
 //             <input
-//               id="imForm"
+//               className="patient-Form"
 //               type="text"
 //               name="userName"
 //               placeholder="Full Name"
@@ -157,7 +164,7 @@ export default PatientRegistrationForm;
 //             <NewLable>Email</NewLable>
 //             {touched.userEmail && errors.userEmail && <p>{errors.userEmail}</p>}
 //             <input
-//               id="imForm"
+//               className="patient-Form"
 //               type="text"
 //               name="userEmail"
 //               placeholder="Email"
@@ -168,7 +175,7 @@ export default PatientRegistrationForm;
 //               <p>{errors.userPassword}</p>
 //             )}
 //             <input
-//               id="imForm"
+//               className="patient-Form"
 //               type="password"
 //               name="userPassword"
 //               placeholder="Password"
@@ -191,7 +198,7 @@ export default PatientRegistrationForm;
 //     };
 //   },
 
-//   validationScheme: yup.object().shape({
+//   valclassNameationScheme: yup.object().shape({
 //     userName: yup
 //       .string()
 //       .matches(
@@ -203,7 +210,7 @@ export default PatientRegistrationForm;
 //     userEmail: yup
 //       .string()
 //       .email()
-//       .required("Please enter valid email"),
+//       .required("Please enter valclassName email"),
 //     userPassword: yup
 //       .string()
 //       .min(6, "Your password must be at least 6 characters")

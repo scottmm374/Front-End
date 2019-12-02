@@ -17,7 +17,7 @@ export const Button = styled.button`
   color: #ffffff;
   &:hover {
     background: #ffb286;
-    border: 1px solid #ffffff;
+    border: 1px solclassName #ffffff;
     color: #ffffff;
   }
   border-radius: 4px;
@@ -32,85 +32,84 @@ export const Button = styled.button`
 const NForm = styled(Form)`
   margin-top: 35px;
   display: flex;
-  max-width: 65%;
+  // max-wclassnameth: 65%;
   justify-content: center;
   flex-direction: column;
 `;
 
+const NewField = styled(Field)`
+  background: white;
+  &:hover {
+    background: #fdebe1;
+  }
+`;
+
 // const NewCard = styled(Card)`
-//   max-width: 100%;
+//   max-wclassNameth: 100%;
 // `;
 
 const AddChild = ({ values, touched, errors }) => {
   console.log(values);
   return (
     // <NewCard>
+    <div className="form-cont">
+      <NForm>
+        <NewField
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          className="patient-Form"
+        />
+        {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
+        {/* </FormContainer> */}
+        {/* <FormContainer> */}
+        {/*  <NewLable htmlFor="lastName">Last Name</NewLable> */}
+        <NewField
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          className="patient-Form"
+        />
+        {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
 
-    <NForm>
-      <Field
-        type="text"
-        name="firstName"
-        placeholder="First Name"
-        id="imForm"
-      />
-      {touched.firstName && errors.firstName && <p>{errors.firstName}</p>}
-      {/* </FormContainer> */}
-      {/* <FormContainer> */}
-      {/*  <NewLable htmlFor="lastName">Last Name</NewLable> */}
-      <Field type="text" name="lastName" placeholder="Last Name" id="imForm" />
-      {touched.lastName && errors.lastName && <p>{errors.lastName}</p>}
-      {/* </FormContainer> */}
-      {/* <FormContainer> */}
-      {/*  <NewLable htmlFor="age">Age</NewLable> */}
-      <Field type="text" name="age" placeholder="Age (years)" id="imForm">
-        {/* <option>Age (years)</option>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option> */}
-      </Field>
-      {touched.age && errors.age && <p>{errors.age}</p>}
-      {/* </FormContainer> */}
-      {/* <FormContainer> */}
-      {/*  <NewLable htmlFor="gender">Gender</NewLable> */}
-      <Field component="select" name="gender" placeholder="Gender" id="imForm">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </Field>
-      {touched.gender && errors.gender && <p>{errors.gender}</p>}
-      {/* </FormContainer> */}
-      {/* <FormContainer> */}
-      {/*  <NewLable htmlFor="weight">Weight</NewLable> */}
-      <Field type="text" name="weight" placeholder="Weight (Lbs)" id="imForm" />
-      {touched.weight && errors.weight && <p>{errors.weight}</p>}
-      {/* </FormContainer> */}
-      {/* <FormContainer> */}
-      {/*  <NewLable htmlFor="height">Height</NewLable> */}
-      <Field
-        type="text"
-        name="height"
-        placeholder="Height (inches)"
-        id="imForm"
-      />
-      {touched.height && errors.height && <p>{errors.height}</p>}
-      {/* </FormContainer> */}
-      <Button type="submit">Add</Button>
-      {/* </CardBody> */}
-    </NForm>
+        <NewField
+          type="text"
+          name="age"
+          placeholder="Age (years)"
+          className="patient-Form"
+        ></NewField>
+        {touched.age && errors.age && <p>{errors.age}</p>}
+
+        <NewField
+          component="select"
+          name="gender"
+          placeholder="Gender"
+          className="patient-Form"
+        >
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </NewField>
+        {touched.gender && errors.gender && <p>{errors.gender}</p>}
+
+        <NewField
+          type="text"
+          name="weight"
+          placeholder="Weight (Lbs)"
+          className="patient-Form"
+        />
+        {touched.weight && errors.weight && <p>{errors.weight}</p>}
+
+        <NewField
+          type="text"
+          name="height"
+          placeholder="Height (inches)"
+          className="patient-Form"
+        />
+        {touched.height && errors.height && <p>{errors.height}</p>}
+
+        <Button type="submit">Add</Button>
+      </NForm>
+    </div>
   );
 };
 
@@ -124,7 +123,7 @@ const FormikAddChildForm = withFormik({
     height,
     patientEmail,
     isChild,
-    userId
+    userclassName
   }) {
     return {
       firstName: firstName || "",
@@ -136,11 +135,11 @@ const FormikAddChildForm = withFormik({
       patientEmail: patientEmail || "",
       //patientPhone: patientPhone || "",
       isChild: isChild || true,
-      userId: userId || ""
+      userclassName: userclassName || ""
     };
   },
 
-  validationSchema: Yup.object().shape({
+  valclassNameationSchema: Yup.object().shape({
     firstName: Yup.string().required("Enter first name."),
     lastName: Yup.string().required("Enter last name."),
     age: Yup.string().required("Select an age."),
